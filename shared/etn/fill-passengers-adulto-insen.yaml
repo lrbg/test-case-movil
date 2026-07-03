@@ -17,9 +17,7 @@ appId: mx.com.etn.etnturistarlujo
 - inputText: "Nombre1"
 - tapOn: { id: "passenger-lastname-input-1" }
 - inputText: "Apellido1"
-- tapOn: { text: "Categoría" }
-# "Viajero Protegido" viene ON por defecto; para sin seguro se apaga cada
-# toggle (uno por pasajero/tramo), para con seguro se dejan todos ON.
+- tapOn: { text: "Datos para la compra" }
 - runFlow:
     when:
       true: ${INSURANCE == "off"}
@@ -28,8 +26,16 @@ appId: mx.com.etn.etnturistarlujo
           element:
             text: "Viajero Protegido"
           direction: DOWN
-      - tapOn: { text: "Viajero Protegido", index: 0 }
-      - tapOn: { text: "Viajero Protegido", index: 1 }
+      - runFlow:
+          when:
+            visible: { text: "Viajero Protegido", index: 0 }
+          commands:
+            - tapOn: { text: "Viajero Protegido", index: 0 }
+      - runFlow:
+          when:
+            visible: { text: "Viajero Protegido", index: 1 }
+          commands:
+            - tapOn: { text: "Viajero Protegido", index: 1 }
 - scrollUntilVisible:
     element:
       text: "Siguiente"

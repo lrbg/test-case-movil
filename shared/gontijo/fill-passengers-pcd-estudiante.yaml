@@ -20,7 +20,7 @@ appId: br.com.gontijo.viagens
 - inputText: "Nome1"
 - tapOn: { text: "Sobrenome", index: 1 }
 - inputText: "Sobrenome1"
-- tapOn: { text: "Categoria" }
+- tapOn: { text: "Dados para a compra" }
 - scrollUntilVisible:
     element:
       text: "Proximo"
