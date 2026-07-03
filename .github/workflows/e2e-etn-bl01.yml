@@ -1,0 +1,81 @@
+name: E2E ETN - BL-01 (ida, 1 pax)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-bl01:
+    runs-on: macos-14
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Install Maestro CLI
+        run: |
+          curl -Ls "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+
+      - name: Download ETN sandbox APK from release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p apk
+          gh release download etn-sandbox-2.65.0 \
+            --repo ${{ github.repository }} \
+            --pattern "etn-sandbox.apk" \
+            --output apk/etn-sandbox.apk
+
+      - name: Run emulator and E2E flow
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 33
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          force-avd-creation: false
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: true
+          script: |
+            adb install -r -g apk/etn-sandbox.apk
+            mkdir -p report-out
+            maestro test etn/flows/BL-01-ida-1adulto-tarjeta-sinseguro.yaml --debug-output report-out || echo "MAESTRO_EXIT=$?" >> "$GITHUB_ENV"
+
+      - name: Build timestamped HTML report
+        if: always()
+        run: |
+          TIMESTAMP=$(date +%d%m%y-%H%M%S)
+          mkdir -p reports
+          REPORT_HTML=$(find report-out -iname "ai-report-*.html" | head -n 1)
+          if [ -n "$REPORT_HTML" ]; then
+            cp "$REPORT_HTML" "reports/${TIMESTAMP}.html"
+          else
+            {
+              echo "<html><body><h1>BL-01 ETN - $TIMESTAMP</h1>"
+              echo "<p>No se genero el reporte HTML de Maestro. Revisa los artifacts de debug-output.</p>"
+              echo "</body></html>"
+            } > "reports/${TIMESTAMP}.html"
+          fi
+          echo "REPORT_FILE=reports/${TIMESTAMP}.html" >> "$GITHUB_ENV"
+
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bl01-report-${{ github.run_id }}
+          path: reports/*.html
+          retention-days: 90
+
+      - name: Upload full debug output (screenshots, logs)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bl01-debug-${{ github.run_id }}
+          path: report-out/**
+          retention-days: 30
