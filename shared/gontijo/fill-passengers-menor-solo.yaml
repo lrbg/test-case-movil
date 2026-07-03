@@ -14,7 +14,7 @@ appId: br.com.gontijo.viagens
 - tapOn: { text: "Data de nascimento" }
 - tapOn: { text: "OK" }
 # se o Proximo nao avancar, reabrir o picker acima e refixar a data
-- tapOn: { text: "Dados para a compra" }
+- tapOn: { text: ".*no se permite que ningún menor viaje solo.*", optional: true }
 - scrollUntilVisible:
     element:
       text: "Proximo"

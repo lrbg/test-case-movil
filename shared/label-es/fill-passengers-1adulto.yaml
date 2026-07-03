@@ -9,7 +9,7 @@ appId: any
 - inputText: "Apellido0"
 - tapOn: { text: "Correo" }
 - inputText: "qa.label.test@reservamos.mx"
-- tapOn: { text: "Datos para la compra" }
+- tapOn: { text: ".*no se permite que ningún menor viaje solo.*", optional: true }
 - scrollUntilVisible:
     element:
       text: "Siguiente"

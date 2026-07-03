@@ -18,7 +18,7 @@ appId: mx.com.etn.etnturistarlujo
 - inputText: "Nombre1"
 - tapOn: { id: "passenger-lastname-input-1" }
 - inputText: "Apellido1"
-- tapOn: { text: "Datos para la compra" }
+- tapOn: { text: ".*no se permite que ningún menor viaje solo.*", optional: true }
 - runFlow:
     when:
       true: ${INSURANCE == "off"}
