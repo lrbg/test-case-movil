@@ -9,12 +9,24 @@ appId: mx.com.etn.etnturistarlujo
 - tapOn: { id: "search-origin-result-0" }
 - inputText: ${DESTINATION}
 - tapOn: { id: "search-destination-result-0" }
+# "Redondo" NO esta en la pantalla de busqueda (solo Hoy/Manana/Elegir); vive
+# DENTRO del calendario que abre "Elegir" (confirmado en corrida real).
 - runFlow:
     when:
       true: ${TRIP_TYPE == "redondo"}
     commands:
+      - tapOn: { id: "search-date-select" }
       - tapOn: { text: "Redondo" }
-      # el 1er tap de fecha tras cambiar a Redondo se pierde en la animacion
-      - tapOn: { id: "search-date-tomorrow", optional: true }
-- tapOn: { id: "search-date-tomorrow" }
-- tapOn: { id: "search-submit-button" }
+      - evalScript: ${output.diaIda = (new Date(Date.now() + 2*86400000)).getDate().toString()}
+      - evalScript: ${output.diaRegreso = (new Date(Date.now() + 3*86400000)).getDate().toString()}
+      - tapOn: { text: "^${output.diaIda}$" }
+      - tapOn: { text: "^${output.diaRegreso}$" }
+      - tapOn: { text: "Continuar" }
+- runFlow:
+    when:
+      true: ${TRIP_TYPE != "redondo"}
+    commands:
+      - tapOn: { id: "search-date-tomorrow" }
+      - tapOn: { id: "search-submit-button" }
+# "Continuar" del calendario redondo ya auto-busca (confirmado en corrida
+# real: aterriza directo en S1); no hace falta tocar BUSCAR de nuevo.

@@ -10,7 +10,7 @@ appId: mx.com.etn.etnturistarlujo
 - tapOn: { id: "payment-buyer-phone-input" }
 - eraseText: 40
 - inputText: ${BUYER_PHONE}
-- tapOn: { id: "payment-method-credit-option" }
+- tapOn: { id: "payment-method-credit-option", optional: true }
 - tapOn: { id: "number" }
 - inputText: "4111 1111 1111 1111"
 - tapOn: { id: "securityCode" }
