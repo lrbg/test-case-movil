@@ -10,6 +10,12 @@ appId: ${APP_ID}
     stopApp: true
     permissions:
       all: allow
+# Onboarding de primer arranque (solo aparece en instalacion fresca, no en
+# relanzamientos posteriores); tambien tolera prompts de notificaciones/
+# ubicacion que a veces tapan la home.
+- tapOn: { id: "onboarding-close-button", optional: true }
+- tapOn: { text: "No permitir", optional: true }
+- tapOn: { text: "No permitir", optional: true }
 - runFlow:
     when:
       true: ${HOME_ANCHOR_ID != null && HOME_ANCHOR_ID != ""}
