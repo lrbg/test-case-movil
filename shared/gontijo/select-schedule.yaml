@@ -1,0 +1,12 @@
+# S1 selecao de horario (Gontijo). Botao "Escolher".
+# env: TRIP_TYPE (ida|redondo)
+appId: br.com.gontijo.viagens
+---
+- assertVisible: { text: "Escolher" }
+- tapOn: { text: "Escolher", index: 0 }
+- runFlow:
+    when:
+      true: ${TRIP_TYPE == "redondo"}
+    commands:
+      - assertVisible: { text: "Escolher" }
+      - tapOn: { text: "Escolher", index: 0 }

@@ -1,0 +1,28 @@
+# S3 dados dos passageiros (Gontijo, PT). Um bloco por assento.
+# Gotcha critico: o DatePicker de "Data de nascimento*" sempre abre em HOJE e
+# nao reflete o valor escrito no campo; se "Proximo" nao avancar sem erro,
+# reabra o picker e refixe a data (nao confie no texto mostrado).
+appId: br.com.gontijo.viagens
+---
+- tapOn: { text: "Nome", index: 0 }
+- inputText: "Nome0"
+- tapOn: { text: "Sobrenome", index: 0 }
+- inputText: "Sobrenome0"
+- tapOn: { text: "E-mail" }
+- inputText: "qa.gontijo.test@reservamos.mx"
+- tapOn: { text: "Categoria", index: 0 }
+- tapOn: { text: "Adulto" }
+- scrollUntilVisible:
+    element:
+      text: "Nome"
+    direction: DOWN
+- tapOn: { text: "Nome", index: 1 }
+- inputText: "Nome1"
+- tapOn: { text: "Sobrenome", index: 1 }
+- inputText: "Sobrenome1"
+- tapOn: { text: "Categoria", index: 1 }
+- tapOn: { text: "Menor (3 a 11 anos)" }
+- tapOn: { text: "Data de nascimento" }
+- tapOn: { text: "OK" }
+# se o Proximo nao avancar, reabrir o picker acima e refixar a data
+- tapOn: { text: "Proximo" }

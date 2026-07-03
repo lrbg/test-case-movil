@@ -1,0 +1,46 @@
+# S2 selecao de assentos (Gontijo). O mapa comeca em y~908 (acima e o teto do
+# onibus, tap nao seleciona). Requer trip fresco (retomar um antigo trava em
+# "Obtendo assentos"). Um so tap por assento (duplo tap desmarca).
+# env: SEAT_COUNT, TRIP_TYPE (ida|redondo)
+appId: br.com.gontijo.viagens
+---
+- assertVisible: { text: "LIVRE" }
+- evalScript: ${output.seatsTaken = 0}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "1" }
+          commands:
+            - tapOn: { text: "1" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "2" }
+          commands:
+            - tapOn: { text: "2" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- tapOn: { text: "Continuar com.*assento.*" }
+- runFlow:
+    when:
+      true: ${TRIP_TYPE == "redondo"}
+    commands:
+      - assertVisible: { text: "LIVRE" }
+      - evalScript: ${output.seatsTakenReturn = 0}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "1" }
+                commands:
+                  - tapOn: { text: "1" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - tapOn: { text: "Continuar com.*assento.*" }

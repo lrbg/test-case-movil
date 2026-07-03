@@ -1,0 +1,27 @@
+# S4 pago con PayPal (ETN). El login de PayPal es en WebView; por seguridad el
+# agente NO teclea la contrasena (ver memoria feedback-no-typing-passwords):
+# prellena el correo y espera a que el tester capture la contrasena y confirme.
+# env: BUYER_NAME, BUYER_LASTNAME, BUYER_PHONE
+appId: mx.com.etn.etnturistarlujo
+---
+- assertVisible: { id: "payment-page-title" }
+- tapOn: { id: "payment-use-passenger-data-switch" }
+- tapOn: { id: "payment-buyer-phone-input" }
+- eraseText: 40
+- inputText: ${BUYER_PHONE}
+# 1a tarjeta "Credito o debito" = metodo PayPal (sin id estable)
+- tapOn:
+    point: "52%, 78%"
+- scrollUntilVisible:
+    element:
+      text: "Pagar \\$.*"
+    direction: DOWN
+- tapOn: { text: "Pagar \\$.*" }
+- inputText: "webmaster-buyer@reserbus.com"
+- tapOn: { text: "Siguiente", optional: true }
+# Punto de intervencion manual: el tester teclea la contrasena y confirma login.
+- extendedWaitUntil:
+    visible: "Pagar con"
+    timeout: 120000
+- tapOn: { text: "Compra completa" }
+- tapOn: { text: "Confirmar monto.*" }

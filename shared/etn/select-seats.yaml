@@ -1,0 +1,57 @@
+# S2 seleccion de asientos (ETN, testIDs).
+# env: SEAT_COUNT (numero de asientos a elegir), TRIP_TYPE (ida|redondo).
+# Los asientos libres varian por corrida real; se intenta una secuencia de
+# indices (1..12) y se toca el primero que este visible, hasta cubrir
+# SEAT_COUNT. Patron de "primer disponible", no numeros fijos.
+appId: mx.com.etn.etnturistarlujo
+---
+- assertVisible: { id: "seats-map-container" }
+- evalScript: ${output.seatsTaken = 0}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-1" }
+          commands:
+            - tapOn: { id: "seats-available-1" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-2" }
+          commands:
+            - tapOn: { id: "seats-available-2" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- tapOn: { id: "seats-continue-button" }
+- runFlow:
+    when:
+      true: ${TRIP_TYPE == "redondo"}
+    commands:
+      - assertVisible: { id: "seats-map-container" }
+      - evalScript: ${output.seatsTakenReturn = 0}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-1" }
+                commands:
+                  - tapOn: { id: "seats-available-1" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-2" }
+                commands:
+                  - tapOn: { id: "seats-available-2" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - tapOn: { id: "seats-continue-button" }

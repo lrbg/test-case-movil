@@ -1,0 +1,13 @@
+# S1 seleccion de horario (ETN).
+# env: TRIP_TYPE (ida|redondo). En redondo la app pide primero la corrida de
+# ida y luego la de regreso antes de pasar a asientos.
+appId: mx.com.etn.etnturistarlujo
+---
+- assertVisible: { text: "Ver asientos" }
+- tapOn: { text: "Ver asientos", index: 0 }
+- runFlow:
+    when:
+      true: ${TRIP_TYPE == "redondo"}
+    commands:
+      - assertVisible: { text: "Ver asientos" }
+      - tapOn: { text: "Ver asientos", index: 0 }

@@ -1,0 +1,28 @@
+# S0 busca (Gontijo, PT, sem acentos no texto digitado). Sem testIDs.
+# env: ORIGIN, DESTINATION, TRIP_TYPE (ida|redondo)
+# Sandbox Gontijo e UNIDIRECCIONAL: Sao Paulo -> Belo Horizonte tem corridas;
+# o inverso da "Nao ha resultados" (nao e bug, e dado de sandbox).
+appId: br.com.gontijo.viagens
+---
+- tapOn: { text: "Selecione sua Origem" }
+- inputText: ${ORIGIN}
+- tapOn: { text: ${ORIGIN}, index: 0 }
+- tapOn: { text: ${ORIGIN}, index: 0 }
+- inputText: ${DESTINATION}
+- tapOn: { text: ${DESTINATION}, index: 0 }
+- tapOn: { text: ${DESTINATION}, index: 0 }
+- runFlow:
+    when:
+      true: ${TRIP_TYPE == "redondo"}
+    commands:
+      - tapOn: { text: "Redondo" }
+- tapOn: { text: "Ida, Data de Partida" }
+# PENDIENTE DE VALIDAR: seleccion de dia por numero calculado (manana).
+- evalScript: ${output.tomorrowDay = (new Date(Date.now() + 86400000)).getDate().toString()}
+- tapOn: { text: ${output.tomorrowDay} }
+- runFlow:
+    when:
+      true: ${TRIP_TYPE == "redondo"}
+    commands:
+      - tapOn: { text: ${output.tomorrowDay} }
+- tapOn: { text: "BUSCAR" }

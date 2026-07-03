@@ -1,0 +1,28 @@
+# Subflow reutilizable: launch fresco de la app antes de cada caso.
+# Parametros (env):
+#   APP_ID           (obligatorio) paquete de la marca.
+#   HOME_ANCHOR_ID    (opcional) testID de un elemento de la home (ETN).
+#   HOME_ANCHOR_TEXT  (opcional) texto de un elemento de la home (apps label).
+appId: ${APP_ID}
+---
+- launchApp:
+    appId: ${APP_ID}
+    stopApp: true
+    permissions:
+      all: allow
+- runFlow:
+    when:
+      true: ${HOME_ANCHOR_ID != null && HOME_ANCHOR_ID != ""}
+    commands:
+      - extendedWaitUntil:
+          visible:
+            id: ${HOME_ANCHOR_ID}
+          timeout: 30000
+- runFlow:
+    when:
+      true: ${HOME_ANCHOR_TEXT != null && HOME_ANCHOR_TEXT != ""}
+    commands:
+      - extendedWaitUntil:
+          visible:
+            text: ${HOME_ANCHOR_TEXT}
+          timeout: 30000

@@ -1,0 +1,28 @@
+appId: br.com.gontijo.viagens
+---
+- runFlow:
+    file: ../../shared/launch-app.yaml
+    env:
+      APP_ID: "br.com.gontijo.viagens"
+      HOME_ANCHOR_TEXT: "Selecione sua Origem"
+- runFlow:
+    file: ../../shared/gontijo/search-trip.yaml
+    env:
+      ORIGIN: "Sao Paulo"
+      DESTINATION: "Belo Horizonte"
+      TRIP_TYPE: "ida"
+- runFlow:
+    file: ../../shared/gontijo/select-schedule.yaml
+    env:
+      TRIP_TYPE: "ida"
+- runFlow:
+    file: ../../shared/gontijo/select-seats.yaml
+    env:
+      SEAT_COUNT: "1"
+      TRIP_TYPE: "ida"
+- runFlow:
+    file: ../../shared/gontijo/fill-passengers-menor-solo.yaml
+    env:
+      INSURANCE: "off"
+- assertVisible: "nao e permitido que nenhum menor viaje sozinho"
+# TC pasa cuando el bloqueo se cumple: la compra NO debe poder completarse.

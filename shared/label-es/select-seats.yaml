@@ -1,0 +1,47 @@
+# S2 seleccion de asientos (apps label, sin testIDs).
+# PENDIENTE DE VALIDAR contra emulador real: al mapear el flujo el servicio de
+# asientos de estas marcas estaba caido, asi que este subflow sigue el mismo
+# patron de ETN por analogia (sin ejecucion confirmada). Requiere trip fresco.
+# env: SEAT_COUNT, TRIP_TYPE (ida|redondo)
+appId: any
+---
+- assertVisible: { text: "LIBRE" }
+- evalScript: ${output.seatsTaken = 0}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "1" }
+          commands:
+            - tapOn: { text: "1" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "2" }
+          commands:
+            - tapOn: { text: "2" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- tapOn: { text: "Continuar con.*asiento.*" }
+- runFlow:
+    when:
+      true: ${TRIP_TYPE == "redondo"}
+    commands:
+      - assertVisible: { text: "LIBRE" }
+      - evalScript: ${output.seatsTakenReturn = 0}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "1" }
+                commands:
+                  - tapOn: { text: "1" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - tapOn: { text: "Continuar con.*asiento.*" }

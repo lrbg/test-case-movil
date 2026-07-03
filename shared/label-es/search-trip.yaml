@@ -1,0 +1,30 @@
+# S0 busqueda (apps label ES: Cruz del Sur, Autovias). Sin testIDs: localiza
+# por texto. El RN ScrollView requiere doble tap en el resultado del
+# autocomplete (el primero solo cierra el teclado).
+# env: ORIGIN, DESTINATION, TRIP_TYPE (ida|redondo)
+appId: any
+---
+- tapOn: { text: "Selecciona tu Origen" }
+- inputText: ${ORIGIN}
+- tapOn: { text: ${ORIGIN}, index: 0 }
+- tapOn: { text: ${ORIGIN}, index: 0 }
+- inputText: ${DESTINATION}
+- tapOn: { text: ${DESTINATION}, index: 0 }
+- tapOn: { text: ${DESTINATION}, index: 0 }
+- runFlow:
+    when:
+      true: ${TRIP_TYPE == "redondo"}
+    commands:
+      - tapOn: { text: "Redondo" }
+- tapOn: { text: "Ida, Fecha de Salida" }
+# PENDIENTE DE VALIDAR: seleccion de dia por numero calculado (manana),
+# heuristica basada en el patron documentado; confirmar accessibilityText
+# real del calendario contra el emulador antes de correr en batch.
+- evalScript: ${output.tomorrowDay = (new Date(Date.now() + 86400000)).getDate().toString()}
+- tapOn: { text: ${output.tomorrowDay} }
+- runFlow:
+    when:
+      true: ${TRIP_TYPE == "redondo"}
+    commands:
+      - tapOn: { text: ${output.tomorrowDay} }
+- tapOn: { text: "BUSCAR" }

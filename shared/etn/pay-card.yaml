@@ -1,0 +1,23 @@
+# S4 pago con tarjeta (ETN). Formulario Cybersource en WebView, accesible por id.
+# env: BUYER_NAME, BUYER_LASTNAME, BUYER_PHONE
+appId: mx.com.etn.etnturistarlujo
+---
+- assertVisible: { id: "payment-page-title" }
+- tapOn: { id: "payment-use-passenger-data-switch" }
+- tapOn: { id: "payment-buyer-phone-input" }
+- eraseText: 40
+- inputText: ${BUYER_PHONE}
+- tapOn: { id: "payment-method-credit-option" }
+- tapOn: { id: "number" }
+- inputText: "4111 1111 1111 1111"
+- tapOn: { id: "securityCode" }
+- inputText: "737"
+- tapOn: { id: "holderName" }
+- inputText: "John Doe"
+- tapOn: { text: "03" }
+- tapOn: { text: "2030" }
+- scrollUntilVisible:
+    element:
+      text: "Pagar \\$.*"
+    direction: DOWN
+- tapOn: { text: "Pagar \\$.*" }

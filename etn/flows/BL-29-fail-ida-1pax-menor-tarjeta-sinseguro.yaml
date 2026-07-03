@@ -1,0 +1,28 @@
+appId: mx.com.etn.etnturistarlujo
+---
+- runFlow:
+    file: ../../shared/launch-app.yaml
+    env:
+      APP_ID: "mx.com.etn.etnturistarlujo"
+      HOME_ANCHOR_ID: "search-origin-trigger"
+- runFlow:
+    file: ../../shared/etn/search-trip.yaml
+    env:
+      ORIGIN: "Ciudad de Mexico"
+      DESTINATION: "Celaya"
+      TRIP_TYPE: "ida"
+- runFlow:
+    file: ../../shared/etn/select-schedule.yaml
+    env:
+      TRIP_TYPE: "ida"
+- runFlow:
+    file: ../../shared/etn/select-seats.yaml
+    env:
+      SEAT_COUNT: "1"
+      TRIP_TYPE: "ida"
+- runFlow:
+    file: ../../shared/etn/fill-passengers-menor-solo.yaml
+    env:
+      INSURANCE: "off"
+- assertVisible: "no se permite que ningun menor viaje solo"
+# TC pasa cuando el bloqueo se cumple: la compra NO debe poder completarse.

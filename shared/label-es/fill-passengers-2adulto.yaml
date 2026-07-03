@@ -1,0 +1,24 @@
+# S3 datos de pasajeros (apps label ES). Un bloque por asiento.
+# PENDIENTE DE VALIDAR: campos extra por tipo (Menor: fecha nac.; Estudiante/
+# INSEN: credencial) no confirmados aun para estas marcas (ver baseline-suite.md).
+appId: any
+---
+- tapOn: { text: "Nombre", index: 0 }
+- inputText: "Nombre0"
+- tapOn: { text: "Primer apellido", index: 0 }
+- inputText: "Apellido0"
+- tapOn: { text: "Correo" }
+- inputText: "qa.label.test@reservamos.mx"
+- tapOn: { text: "Categoria", index: 0 }
+- tapOn: { text: "Adulto" }
+- scrollUntilVisible:
+    element:
+      text: "Nombre"
+    direction: DOWN
+- tapOn: { text: "Nombre", index: 1 }
+- inputText: "Nombre1"
+- tapOn: { text: "Primer apellido", index: 1 }
+- inputText: "Apellido1"
+- tapOn: { text: "Categoria", index: 1 }
+- tapOn: { text: "Adulto" }
+- tapOn: { text: "Siguiente" }

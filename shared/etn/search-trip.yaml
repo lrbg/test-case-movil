@@ -1,0 +1,20 @@
+# S0 busqueda (ETN, testIDs).
+# env: ORIGIN, DESTINATION, TRIP_TYPE (ida|redondo)
+appId: mx.com.etn.etnturistarlujo
+---
+- tapOn: { text: "No permitir", optional: true }
+- tapOn: { text: "No permitir", optional: true }
+- tapOn: { id: "search-origin-trigger" }
+- inputText: ${ORIGIN}
+- tapOn: { id: "search-origin-result-0" }
+- inputText: ${DESTINATION}
+- tapOn: { id: "search-destination-result-0" }
+- runFlow:
+    when:
+      true: ${TRIP_TYPE == "redondo"}
+    commands:
+      - tapOn: { text: "Redondo" }
+      # el 1er tap de fecha tras cambiar a Redondo se pierde en la animacion
+      - tapOn: { id: "search-date-tomorrow", optional: true }
+- tapOn: { id: "search-date-tomorrow" }
+- tapOn: { id: "search-submit-button" }

@@ -1,0 +1,31 @@
+appId: mx.com.etn.etnturistarlujo
+---
+- runFlow:
+    file: ../../shared/launch-app.yaml
+    env:
+      APP_ID: "mx.com.etn.etnturistarlujo"
+      HOME_ANCHOR_ID: "search-origin-trigger"
+- runFlow:
+    file: ../../shared/etn/search-trip.yaml
+    env:
+      ORIGIN: "Ciudad de Mexico"
+      DESTINATION: "Celaya"
+      TRIP_TYPE: "ida"
+- runFlow:
+    file: ../../shared/etn/select-schedule.yaml
+    env:
+      TRIP_TYPE: "ida"
+- runFlow:
+    file: ../../shared/etn/select-seats.yaml
+    env:
+      SEAT_COUNT: "2"
+      TRIP_TYPE: "ida"
+- runFlow:
+    file: ../../shared/etn/fill-passengers-adulto-insen.yaml
+    env:
+      INSURANCE: "on"
+- runFlow:
+    file: ../../shared/etn/pay-paypal.yaml
+    env:
+      BUYER_PHONE: "5512345678"
+- assertVisible: "compra.*exitosa"

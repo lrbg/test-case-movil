@@ -1,0 +1,23 @@
+# S4 pagamento com PayPal (Gontijo). Nao se digita a senha (o tester
+# completa o login), ver feedback-no-typing-passwords.
+# PENDIENTE DE VALIDAR contra emulador real.
+# env: BUYER_PHONE
+appId: br.com.gontijo.viagens
+---
+- tapOn: { text: "Usar dados do primeiro passageiro" }
+- tapOn: { text: "Telefone" }
+- eraseText: 40
+- inputText: ${BUYER_PHONE}
+- tapOn: { text: "PayPal" }
+- scrollUntilVisible:
+    element:
+      text: "Pagar.*"
+    direction: DOWN
+- tapOn: { text: "Pagar.*" }
+- inputText: "webmaster-buyer@reserbus.com"
+- tapOn: { text: "Proximo", optional: true }
+- extendedWaitUntil:
+    visible: "Pagar com"
+    timeout: 120000
+- tapOn: { text: "Compra completa" }
+- tapOn: { text: "Confirmar valor.*" }

@@ -1,0 +1,32 @@
+appId: com.gho.autovias
+---
+- runFlow:
+    file: ../../shared/launch-app.yaml
+    env:
+      APP_ID: "com.gho.autovias"
+      HOME_ANCHOR_TEXT: "Selecciona tu Origen"
+- runFlow:
+    file: ../../shared/label-es/search-trip.yaml
+    env:
+      ORIGIN: "Guadalajara"
+      DESTINATION: "Colima"
+      TRIP_TYPE: "ida"
+- runFlow:
+    file: ../../shared/label-es/select-schedule.yaml
+    env:
+      TRIP_TYPE: "ida"
+      SCHEDULE_BUTTON_TEXT: "Ver asientos"
+- runFlow:
+    file: ../../shared/label-es/select-seats.yaml
+    env:
+      SEAT_COUNT: "1"
+      TRIP_TYPE: "ida"
+- runFlow:
+    file: ../../shared/label-es/fill-passengers-1adulto.yaml
+    env:
+      INSURANCE: "on"
+- runFlow:
+    file: ../../shared/label-es/pay-card.yaml
+    env:
+      BUYER_PHONE: "5512345678"
+- assertVisible: "compra.*exitosa"

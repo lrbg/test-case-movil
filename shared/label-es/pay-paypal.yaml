@@ -1,0 +1,23 @@
+# S4 pago con PayPal (apps label ES). Igual que ETN: no se teclea la
+# contrasena, la captura el tester (feedback-no-typing-passwords).
+# PENDIENTE DE VALIDAR contra emulador real (ver nota en select-seats.yaml).
+# env: BUYER_PHONE
+appId: any
+---
+- tapOn: { text: "Usar datos del primer pasajero" }
+- tapOn: { text: "Telefono" }
+- eraseText: 40
+- inputText: ${BUYER_PHONE}
+- tapOn: { text: "PayPal" }
+- scrollUntilVisible:
+    element:
+      text: "Pagar.*"
+    direction: DOWN
+- tapOn: { text: "Pagar.*" }
+- inputText: "webmaster-buyer@reserbus.com"
+- tapOn: { text: "Siguiente", optional: true }
+- extendedWaitUntil:
+    visible: "Pagar con"
+    timeout: 120000
+- tapOn: { text: "Compra completa" }
+- tapOn: { text: "Confirmar monto.*" }

@@ -1,0 +1,23 @@
+# S4 pagamento com cartao (Gontijo).
+# PENDIENTE DE VALIDAR contra emulador real (S4 mapeado por analogia com ETN).
+# env: BUYER_PHONE
+appId: br.com.gontijo.viagens
+---
+- tapOn: { text: "Usar dados do primeiro passageiro" }
+- tapOn: { text: "Telefone" }
+- eraseText: 40
+- inputText: ${BUYER_PHONE}
+- tapOn: { text: "Cartao" }
+- tapOn: { id: "number" }
+- inputText: "4111 1111 1111 1111"
+- tapOn: { id: "securityCode" }
+- inputText: "737"
+- tapOn: { id: "holderName" }
+- inputText: "John Doe"
+- tapOn: { text: "03" }
+- tapOn: { text: "2030" }
+- scrollUntilVisible:
+    element:
+      text: "Pagar.*"
+    direction: DOWN
+- tapOn: { text: "Pagar.*" }

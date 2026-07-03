@@ -1,0 +1,12 @@
+# S1 seleccion de horario (Cruz del Sur = "Elegir", Autovias = "Ver asientos").
+# env: TRIP_TYPE (ida|redondo), SCHEDULE_BUTTON_TEXT
+appId: any
+---
+- assertVisible: { text: ${SCHEDULE_BUTTON_TEXT} }
+- tapOn: { text: ${SCHEDULE_BUTTON_TEXT}, index: 0 }
+- runFlow:
+    when:
+      true: ${TRIP_TYPE == "redondo"}
+    commands:
+      - assertVisible: { text: ${SCHEDULE_BUTTON_TEXT} }
+      - tapOn: { text: ${SCHEDULE_BUTTON_TEXT}, index: 0 }

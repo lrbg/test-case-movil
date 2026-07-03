@@ -1,0 +1,29 @@
+appId: com.gho.autovias
+---
+- runFlow:
+    file: ../../shared/launch-app.yaml
+    env:
+      APP_ID: "com.gho.autovias"
+      HOME_ANCHOR_TEXT: "Selecciona tu Origen"
+- runFlow:
+    file: ../../shared/label-es/search-trip.yaml
+    env:
+      ORIGIN: "Guadalajara"
+      DESTINATION: "Colima"
+      TRIP_TYPE: "ida"
+- runFlow:
+    file: ../../shared/label-es/select-schedule.yaml
+    env:
+      TRIP_TYPE: "ida"
+      SCHEDULE_BUTTON_TEXT: "Ver asientos"
+- runFlow:
+    file: ../../shared/label-es/select-seats.yaml
+    env:
+      SEAT_COUNT: "1"
+      TRIP_TYPE: "ida"
+- runFlow:
+    file: ../../shared/label-es/fill-passengers-menor-solo.yaml
+    env:
+      INSURANCE: "off"
+- assertVisible: "no se permite que ningun menor viaje solo"
+# TC pasa cuando el bloqueo se cumple: la compra NO debe poder completarse.

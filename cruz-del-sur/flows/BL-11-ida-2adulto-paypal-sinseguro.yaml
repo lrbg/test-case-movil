@@ -1,0 +1,32 @@
+appId: pe.com.cds
+---
+- runFlow:
+    file: ../../shared/launch-app.yaml
+    env:
+      APP_ID: "pe.com.cds"
+      HOME_ANCHOR_TEXT: "Selecciona tu Origen"
+- runFlow:
+    file: ../../shared/label-es/search-trip.yaml
+    env:
+      ORIGIN: "Lima"
+      DESTINATION: "Ica"
+      TRIP_TYPE: "ida"
+- runFlow:
+    file: ../../shared/label-es/select-schedule.yaml
+    env:
+      TRIP_TYPE: "ida"
+      SCHEDULE_BUTTON_TEXT: "Elegir"
+- runFlow:
+    file: ../../shared/label-es/select-seats.yaml
+    env:
+      SEAT_COUNT: "2"
+      TRIP_TYPE: "ida"
+- runFlow:
+    file: ../../shared/label-es/fill-passengers-2adulto.yaml
+    env:
+      INSURANCE: "off"
+- runFlow:
+    file: ../../shared/label-es/pay-paypal.yaml
+    env:
+      BUYER_PHONE: "5512345678"
+- assertVisible: "compra.*exitosa"
