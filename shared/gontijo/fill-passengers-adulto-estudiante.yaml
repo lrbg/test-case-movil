@@ -10,16 +10,17 @@ appId: br.com.gontijo.viagens
 - inputText: "Sobrenome0"
 - tapOn: { text: "E-mail" }
 - inputText: "qa.gontijo.test@reservamos.mx"
-- tapOn: { text: "Categoria", index: 0 }
-- tapOn: { text: "Adulto" }
 - scrollUntilVisible:
     element:
       text: "Nome"
     direction: DOWN
+- tapOn: { text: "Estudante", index: 1 }
 - tapOn: { text: "Nome", index: 1 }
 - inputText: "Nome1"
 - tapOn: { text: "Sobrenome", index: 1 }
 - inputText: "Sobrenome1"
-- tapOn: { text: "Categoria", index: 1 }
-- tapOn: { text: "Estudante" }
+- scrollUntilVisible:
+    element:
+      text: "Proximo"
+    direction: DOWN
 - tapOn: { text: "Proximo" }

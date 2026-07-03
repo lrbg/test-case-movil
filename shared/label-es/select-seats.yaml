@@ -2,6 +2,8 @@
 # PENDIENTE DE VALIDAR contra emulador real: al mapear el flujo el servicio de
 # asientos de estas marcas estaba caido, asi que este subflow sigue el mismo
 # patron de ETN por analogia (sin ejecucion confirmada). Requiere trip fresco.
+# Rango amplio de indices (1..20): la disponibilidad real varia por corrida
+# (confirmado en ETN: los primeros asientos a veces salen ocupados).
 # env: SEAT_COUNT, TRIP_TYPE (ida|redondo)
 appId: any
 ---
@@ -13,9 +15,9 @@ appId: any
     commands:
       - runFlow:
           when:
-            visible: { text: "1" }
+            visible: { text: "^1$" }
           commands:
-            - tapOn: { text: "1" }
+            - tapOn: { text: "^1$" }
             - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
 - runFlow:
     when:
@@ -23,9 +25,189 @@ appId: any
     commands:
       - runFlow:
           when:
-            visible: { text: "2" }
+            visible: { text: "^2$" }
           commands:
-            - tapOn: { text: "2" }
+            - tapOn: { text: "^2$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^3$" }
+          commands:
+            - tapOn: { text: "^3$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^4$" }
+          commands:
+            - tapOn: { text: "^4$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^5$" }
+          commands:
+            - tapOn: { text: "^5$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^6$" }
+          commands:
+            - tapOn: { text: "^6$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^7$" }
+          commands:
+            - tapOn: { text: "^7$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^8$" }
+          commands:
+            - tapOn: { text: "^8$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^9$" }
+          commands:
+            - tapOn: { text: "^9$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^10$" }
+          commands:
+            - tapOn: { text: "^10$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^11$" }
+          commands:
+            - tapOn: { text: "^11$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^12$" }
+          commands:
+            - tapOn: { text: "^12$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^13$" }
+          commands:
+            - tapOn: { text: "^13$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^14$" }
+          commands:
+            - tapOn: { text: "^14$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^15$" }
+          commands:
+            - tapOn: { text: "^15$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^16$" }
+          commands:
+            - tapOn: { text: "^16$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^17$" }
+          commands:
+            - tapOn: { text: "^17$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^18$" }
+          commands:
+            - tapOn: { text: "^18$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^19$" }
+          commands:
+            - tapOn: { text: "^19$" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { text: "^20$" }
+          commands:
+            - tapOn: { text: "^20$" }
             - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
 - tapOn: { text: "Continuar con.*asiento.*" }
 - runFlow:
@@ -40,8 +222,198 @@ appId: any
           commands:
             - runFlow:
                 when:
-                  visible: { text: "1" }
+                  visible: { text: "^1$" }
                 commands:
-                  - tapOn: { text: "1" }
+                  - tapOn: { text: "^1$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^2$" }
+                commands:
+                  - tapOn: { text: "^2$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^3$" }
+                commands:
+                  - tapOn: { text: "^3$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^4$" }
+                commands:
+                  - tapOn: { text: "^4$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^5$" }
+                commands:
+                  - tapOn: { text: "^5$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^6$" }
+                commands:
+                  - tapOn: { text: "^6$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^7$" }
+                commands:
+                  - tapOn: { text: "^7$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^8$" }
+                commands:
+                  - tapOn: { text: "^8$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^9$" }
+                commands:
+                  - tapOn: { text: "^9$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^10$" }
+                commands:
+                  - tapOn: { text: "^10$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^11$" }
+                commands:
+                  - tapOn: { text: "^11$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^12$" }
+                commands:
+                  - tapOn: { text: "^12$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^13$" }
+                commands:
+                  - tapOn: { text: "^13$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^14$" }
+                commands:
+                  - tapOn: { text: "^14$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^15$" }
+                commands:
+                  - tapOn: { text: "^15$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^16$" }
+                commands:
+                  - tapOn: { text: "^16$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^17$" }
+                commands:
+                  - tapOn: { text: "^17$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^18$" }
+                commands:
+                  - tapOn: { text: "^18$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^19$" }
+                commands:
+                  - tapOn: { text: "^19$" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { text: "^20$" }
+                commands:
+                  - tapOn: { text: "^20$" }
                   - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
       - tapOn: { text: "Continuar con.*asiento.*" }

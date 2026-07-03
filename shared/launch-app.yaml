@@ -12,7 +12,7 @@ appId: ${APP_ID}
       all: allow
 # Onboarding de primer arranque (solo aparece en instalacion fresca, no en
 # relanzamientos posteriores); tambien tolera prompts de notificaciones/
-# ubicacion que a veces tapan la home.
+# ubicacion que a veces tapan la home. Confirmado en corrida real (BL-01 ETN).
 - tapOn: { id: "onboarding-close-button", optional: true }
 - tapOn: { text: "No permitir", optional: true }
 - tapOn: { text: "No permitir", optional: true }

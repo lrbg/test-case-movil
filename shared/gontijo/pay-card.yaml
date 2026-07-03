@@ -3,6 +3,9 @@
 # env: BUYER_PHONE
 appId: br.com.gontijo.viagens
 ---
+# O sandbox as vezes mostra um modal "O preco mudou" ao entrar em pagamento
+# (revalidacao de tarifa); confirmado em ETN, por analogia aqui tambem.
+- tapOn: { text: "Continuar compra", optional: true }
 - tapOn: { text: "Usar dados do primeiro passageiro" }
 - tapOn: { text: "Telefone" }
 - eraseText: 40
@@ -14,7 +17,11 @@ appId: br.com.gontijo.viagens
 - inputText: "737"
 - tapOn: { id: "holderName" }
 - inputText: "John Doe"
+# Mes/Año son selectores nativos: hay que abrir el dropdown antes de elegir
+# el valor (confirmado en corrida real: tocar el valor directo no hace nada).
+- tapOn: { text: "Mes" }
 - tapOn: { text: "03" }
+- tapOn: { text: "Año" }
 - tapOn: { text: "2030" }
 - scrollUntilVisible:
     element:

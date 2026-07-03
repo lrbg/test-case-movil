@@ -28,4 +28,4 @@ appId: mx.com.etn.etnturistarlujo
     file: ../../shared/etn/pay-paypal.yaml
     env:
       BUYER_PHONE: "5512345678"
-- assertVisible: "compra.*exitosa"
+- assertVisible: "Boletos enviados a tu correo"

@@ -4,15 +4,18 @@
 # reabra o picker e refixe a data (nao confie no texto mostrado).
 appId: br.com.gontijo.viagens
 ---
+- tapOn: { text: "Menor (3 a 11 anos)", index: 0 }
 - tapOn: { text: "Nome", index: 0 }
 - inputText: "Nome0"
 - tapOn: { text: "Sobrenome", index: 0 }
 - inputText: "Sobrenome0"
 - tapOn: { text: "E-mail" }
 - inputText: "qa.gontijo.test@reservamos.mx"
-- tapOn: { text: "Categoria", index: 0 }
-- tapOn: { text: "Menor (3 a 11 anos)" }
 - tapOn: { text: "Data de nascimento" }
 - tapOn: { text: "OK" }
 # se o Proximo nao avancar, reabrir o picker acima e refixar a data
+- scrollUntilVisible:
+    element:
+      text: "Proximo"
+    direction: DOWN
 - tapOn: { text: "Proximo" }

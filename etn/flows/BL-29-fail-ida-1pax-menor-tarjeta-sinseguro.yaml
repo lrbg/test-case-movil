@@ -24,5 +24,5 @@ appId: mx.com.etn.etnturistarlujo
     file: ../../shared/etn/fill-passengers-menor-solo.yaml
     env:
       INSURANCE: "off"
-- assertVisible: "no se permite que ningun menor viaje solo"
+- assertVisible: "no se permite que ningún menor viaje solo"
 # TC pasa cuando el bloqueo se cumple: la compra NO debe poder completarse.

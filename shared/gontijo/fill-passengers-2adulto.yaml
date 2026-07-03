@@ -10,8 +10,6 @@ appId: br.com.gontijo.viagens
 - inputText: "Sobrenome0"
 - tapOn: { text: "E-mail" }
 - inputText: "qa.gontijo.test@reservamos.mx"
-- tapOn: { text: "Categoria", index: 0 }
-- tapOn: { text: "Adulto" }
 - scrollUntilVisible:
     element:
       text: "Nome"
@@ -20,6 +18,8 @@ appId: br.com.gontijo.viagens
 - inputText: "Nome1"
 - tapOn: { text: "Sobrenome", index: 1 }
 - inputText: "Sobrenome1"
-- tapOn: { text: "Categoria", index: 1 }
-- tapOn: { text: "Adulto" }
+- scrollUntilVisible:
+    element:
+      text: "Proximo"
+    direction: DOWN
 - tapOn: { text: "Proximo" }

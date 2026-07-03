@@ -1,8 +1,8 @@
 # S2 seleccion de asientos (ETN, testIDs).
 # env: SEAT_COUNT (numero de asientos a elegir), TRIP_TYPE (ida|redondo).
-# Los asientos libres varian por corrida real; se intenta una secuencia de
-# indices (1..12) y se toca el primero que este visible, hasta cubrir
-# SEAT_COUNT. Patron de "primer disponible", no numeros fijos.
+# Los asientos libres varian por corrida real (confirmado: los primeros 1-2
+# a veces salen ocupados); se intenta una secuencia amplia de indices
+# (1..20) y se toca el primero que este visible, hasta cubrir SEAT_COUNT.
 appId: mx.com.etn.etnturistarlujo
 ---
 - assertVisible: { id: "seats-map-container" }
@@ -26,6 +26,186 @@ appId: mx.com.etn.etnturistarlujo
             visible: { id: "seats-available-2" }
           commands:
             - tapOn: { id: "seats-available-2" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-3" }
+          commands:
+            - tapOn: { id: "seats-available-3" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-4" }
+          commands:
+            - tapOn: { id: "seats-available-4" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-5" }
+          commands:
+            - tapOn: { id: "seats-available-5" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-6" }
+          commands:
+            - tapOn: { id: "seats-available-6" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-7" }
+          commands:
+            - tapOn: { id: "seats-available-7" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-8" }
+          commands:
+            - tapOn: { id: "seats-available-8" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-9" }
+          commands:
+            - tapOn: { id: "seats-available-9" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-10" }
+          commands:
+            - tapOn: { id: "seats-available-10" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-11" }
+          commands:
+            - tapOn: { id: "seats-available-11" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-12" }
+          commands:
+            - tapOn: { id: "seats-available-12" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-13" }
+          commands:
+            - tapOn: { id: "seats-available-13" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-14" }
+          commands:
+            - tapOn: { id: "seats-available-14" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-15" }
+          commands:
+            - tapOn: { id: "seats-available-15" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-16" }
+          commands:
+            - tapOn: { id: "seats-available-16" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-17" }
+          commands:
+            - tapOn: { id: "seats-available-17" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-18" }
+          commands:
+            - tapOn: { id: "seats-available-18" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-19" }
+          commands:
+            - tapOn: { id: "seats-available-19" }
+            - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
+- runFlow:
+    when:
+      true: ${output.seatsTaken < SEAT_COUNT}
+    commands:
+      - runFlow:
+          when:
+            visible: { id: "seats-available-20" }
+          commands:
+            - tapOn: { id: "seats-available-20" }
             - evalScript: ${output.seatsTaken = output.seatsTaken + 1}
 - tapOn: { id: "seats-continue-button" }
 - runFlow:
@@ -53,5 +233,185 @@ appId: mx.com.etn.etnturistarlujo
                   visible: { id: "seats-available-2" }
                 commands:
                   - tapOn: { id: "seats-available-2" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-3" }
+                commands:
+                  - tapOn: { id: "seats-available-3" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-4" }
+                commands:
+                  - tapOn: { id: "seats-available-4" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-5" }
+                commands:
+                  - tapOn: { id: "seats-available-5" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-6" }
+                commands:
+                  - tapOn: { id: "seats-available-6" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-7" }
+                commands:
+                  - tapOn: { id: "seats-available-7" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-8" }
+                commands:
+                  - tapOn: { id: "seats-available-8" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-9" }
+                commands:
+                  - tapOn: { id: "seats-available-9" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-10" }
+                commands:
+                  - tapOn: { id: "seats-available-10" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-11" }
+                commands:
+                  - tapOn: { id: "seats-available-11" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-12" }
+                commands:
+                  - tapOn: { id: "seats-available-12" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-13" }
+                commands:
+                  - tapOn: { id: "seats-available-13" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-14" }
+                commands:
+                  - tapOn: { id: "seats-available-14" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-15" }
+                commands:
+                  - tapOn: { id: "seats-available-15" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-16" }
+                commands:
+                  - tapOn: { id: "seats-available-16" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-17" }
+                commands:
+                  - tapOn: { id: "seats-available-17" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-18" }
+                commands:
+                  - tapOn: { id: "seats-available-18" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-19" }
+                commands:
+                  - tapOn: { id: "seats-available-19" }
+                  - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
+      - runFlow:
+          when:
+            true: ${output.seatsTakenReturn < SEAT_COUNT}
+          commands:
+            - runFlow:
+                when:
+                  visible: { id: "seats-available-20" }
+                commands:
+                  - tapOn: { id: "seats-available-20" }
                   - evalScript: ${output.seatsTakenReturn = output.seatsTakenReturn + 1}
       - tapOn: { id: "seats-continue-button" }

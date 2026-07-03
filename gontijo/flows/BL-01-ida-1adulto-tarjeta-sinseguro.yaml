@@ -28,4 +28,4 @@ appId: br.com.gontijo.viagens
     file: ../../shared/gontijo/pay-card.yaml
     env:
       BUYER_PHONE: "5512345678"
-- assertVisible: "compra.*bem[- ]sucedida"
+- assertVisible: "sucesso"

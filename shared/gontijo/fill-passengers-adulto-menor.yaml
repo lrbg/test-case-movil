@@ -10,19 +10,20 @@ appId: br.com.gontijo.viagens
 - inputText: "Sobrenome0"
 - tapOn: { text: "E-mail" }
 - inputText: "qa.gontijo.test@reservamos.mx"
-- tapOn: { text: "Categoria", index: 0 }
-- tapOn: { text: "Adulto" }
 - scrollUntilVisible:
     element:
       text: "Nome"
     direction: DOWN
+- tapOn: { text: "Menor (3 a 11 anos)", index: 1 }
 - tapOn: { text: "Nome", index: 1 }
 - inputText: "Nome1"
 - tapOn: { text: "Sobrenome", index: 1 }
 - inputText: "Sobrenome1"
-- tapOn: { text: "Categoria", index: 1 }
-- tapOn: { text: "Menor (3 a 11 anos)" }
 - tapOn: { text: "Data de nascimento" }
 - tapOn: { text: "OK" }
 # se o Proximo nao avancar, reabrir o picker acima e refixar a data
+- scrollUntilVisible:
+    element:
+      text: "Proximo"
+    direction: DOWN
 - tapOn: { text: "Proximo" }

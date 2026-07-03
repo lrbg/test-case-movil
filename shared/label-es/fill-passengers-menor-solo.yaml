@@ -3,12 +3,15 @@
 # INSEN: credencial) no confirmados aun para estas marcas (ver baseline-suite.md).
 appId: any
 ---
+- tapOn: { text: "Menor (3 a 11 años)", index: 0 }
 - tapOn: { text: "Nombre", index: 0 }
 - inputText: "Nombre0"
 - tapOn: { text: "Primer apellido", index: 0 }
 - inputText: "Apellido0"
 - tapOn: { text: "Correo" }
 - inputText: "qa.label.test@reservamos.mx"
-- tapOn: { text: "Categoria", index: 0 }
-- tapOn: { text: "Menor (3 a 11 años)" }
+- scrollUntilVisible:
+    element:
+      text: "Siguiente"
+    direction: DOWN
 - tapOn: { text: "Siguiente" }

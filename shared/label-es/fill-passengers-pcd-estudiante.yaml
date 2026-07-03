@@ -3,22 +3,24 @@
 # INSEN: credencial) no confirmados aun para estas marcas (ver baseline-suite.md).
 appId: any
 ---
+- tapOn: { text: "PCD", index: 0 }
 - tapOn: { text: "Nombre", index: 0 }
 - inputText: "Nombre0"
 - tapOn: { text: "Primer apellido", index: 0 }
 - inputText: "Apellido0"
 - tapOn: { text: "Correo" }
 - inputText: "qa.label.test@reservamos.mx"
-- tapOn: { text: "Categoria", index: 0 }
-- tapOn: { text: "PCD" }
 - scrollUntilVisible:
     element:
       text: "Nombre"
     direction: DOWN
+- tapOn: { text: "Estudiante", index: 1 }
 - tapOn: { text: "Nombre", index: 1 }
 - inputText: "Nombre1"
 - tapOn: { text: "Primer apellido", index: 1 }
 - inputText: "Apellido1"
-- tapOn: { text: "Categoria", index: 1 }
-- tapOn: { text: "Estudiante" }
+- scrollUntilVisible:
+    element:
+      text: "Siguiente"
+    direction: DOWN
 - tapOn: { text: "Siguiente" }

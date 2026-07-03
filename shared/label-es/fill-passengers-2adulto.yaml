@@ -9,8 +9,6 @@ appId: any
 - inputText: "Apellido0"
 - tapOn: { text: "Correo" }
 - inputText: "qa.label.test@reservamos.mx"
-- tapOn: { text: "Categoria", index: 0 }
-- tapOn: { text: "Adulto" }
 - scrollUntilVisible:
     element:
       text: "Nombre"
@@ -19,6 +17,8 @@ appId: any
 - inputText: "Nombre1"
 - tapOn: { text: "Primer apellido", index: 1 }
 - inputText: "Apellido1"
-- tapOn: { text: "Categoria", index: 1 }
-- tapOn: { text: "Adulto" }
+- scrollUntilVisible:
+    element:
+      text: "Siguiente"
+    direction: DOWN
 - tapOn: { text: "Siguiente" }

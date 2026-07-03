@@ -4,6 +4,9 @@
 # env: BUYER_NAME, BUYER_LASTNAME, BUYER_PHONE
 appId: mx.com.etn.etnturistarlujo
 ---
+# El sandbox a veces muestra un modal "El precio ha cambiado" al entrar a
+# pago (revalidacion de tarifa); confirmado en corrida real (BL-01 ETN).
+- tapOn: { text: "Continuar compra", optional: true }
 - assertVisible: { id: "payment-page-title" }
 - tapOn: { id: "payment-use-passenger-data-switch" }
 - tapOn: { id: "payment-buyer-phone-input" }

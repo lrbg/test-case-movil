@@ -3,6 +3,9 @@
 # env: BUYER_PHONE
 appId: any
 ---
+# El sandbox a veces muestra un modal "El precio ha cambiado" al entrar a
+# pago (revalidacion de tarifa); confirmado en ETN, por analogia aqui tambien.
+- tapOn: { text: "Continuar compra", optional: true }
 - tapOn: { text: "Usar datos del primer pasajero" }
 - tapOn: { text: "Telefono" }
 - eraseText: 40
@@ -14,7 +17,11 @@ appId: any
 - inputText: "737"
 - tapOn: { id: "holderName" }
 - inputText: "John Doe"
+# Mes/Año son selectores nativos: hay que abrir el dropdown antes de elegir
+# el valor (confirmado en corrida real: tocar el valor directo no hace nada).
+- tapOn: { text: "Mes" }
 - tapOn: { text: "03" }
+- tapOn: { text: "Año" }
 - tapOn: { text: "2030" }
 - scrollUntilVisible:
     element:
