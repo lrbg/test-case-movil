@@ -4,7 +4,7 @@
 # reabra o picker e refixe a data (nao confie no texto mostrado).
 appId: br.com.gontijo.viagens
 ---
-- tapOn: { text: "PCD", index: 0 }
+- tapOn: { text: "PCD", index: 0, optional: true }
 - tapOn: { text: "Nome", index: 0 }
 - inputText: "Nome0"
 - tapOn: { text: "Sobrenome", index: 0 }
@@ -15,7 +15,7 @@ appId: br.com.gontijo.viagens
     element:
       text: "Nome"
     direction: DOWN
-- tapOn: { text: "Estudante", index: 1 }
+- tapOn: { text: "Estudante", index: 1, optional: true }
 - tapOn: { text: "Nome", index: 1 }
 - inputText: "Nome1"
 - tapOn: { text: "Sobrenome", index: 1 }

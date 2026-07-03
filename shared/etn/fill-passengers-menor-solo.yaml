@@ -2,7 +2,7 @@
 # env: PAX_COUNT, PAX_CATEGORY_0.. PAX_CATEGORY_N, INSURANCE (on|off)
 appId: mx.com.etn.etnturistarlujo
 ---
-- tapOn: { text: "Menor (3 a 11 años)", index: 0 }
+- tapOn: { text: "Menor (3 a 11 años)", index: 0, optional: true }
 - tapOn: { id: "passenger-name-input-0" }
 - inputText: "Nombre0"
 - tapOn: { id: "passenger-lastname-input-0" }

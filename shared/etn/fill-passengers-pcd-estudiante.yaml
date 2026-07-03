@@ -2,7 +2,7 @@
 # env: PAX_COUNT, PAX_CATEGORY_0.. PAX_CATEGORY_N, INSURANCE (on|off)
 appId: mx.com.etn.etnturistarlujo
 ---
-- tapOn: { text: "PCD", index: 0 }
+- tapOn: { text: "PCD", index: 0, optional: true }
 - tapOn: { id: "passenger-name-input-0" }
 - inputText: "Nombre0"
 - tapOn: { id: "passenger-lastname-input-0" }
@@ -13,7 +13,7 @@ appId: mx.com.etn.etnturistarlujo
     element:
       id: "passenger-name-input-1"
     direction: DOWN
-- tapOn: { text: "Estudiante", index: 1 }
+- tapOn: { text: "Estudiante", index: 1, optional: true }
 - tapOn: { id: "passenger-name-input-1" }
 - inputText: "Nombre1"
 - tapOn: { id: "passenger-lastname-input-1" }

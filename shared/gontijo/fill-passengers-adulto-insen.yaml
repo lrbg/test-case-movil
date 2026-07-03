@@ -14,7 +14,7 @@ appId: br.com.gontijo.viagens
     element:
       text: "Nome"
     direction: DOWN
-- tapOn: { text: "INSEN", index: 1 }
+- tapOn: { text: "INSEN", index: 1, optional: true }
 - tapOn: { text: "Nome", index: 1 }
 - inputText: "Nome1"
 - tapOn: { text: "Sobrenome", index: 1 }

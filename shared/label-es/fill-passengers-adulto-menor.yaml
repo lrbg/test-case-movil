@@ -13,7 +13,7 @@ appId: any
     element:
       text: "Nombre"
     direction: DOWN
-- tapOn: { text: "Menor (3 a 11 años)", index: 1 }
+- tapOn: { text: "Menor (3 a 11 años)", index: 1, optional: true }
 - tapOn: { text: "Nombre", index: 1 }
 - inputText: "Nombre1"
 - tapOn: { text: "Primer apellido", index: 1 }

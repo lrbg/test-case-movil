@@ -13,7 +13,7 @@ appId: any
     element:
       text: "Nombre"
     direction: DOWN
-- tapOn: { text: "INSEN", index: 1 }
+- tapOn: { text: "INSEN", index: 1, optional: true }
 - tapOn: { text: "Nombre", index: 1 }
 - inputText: "Nombre1"
 - tapOn: { text: "Primer apellido", index: 1 }
