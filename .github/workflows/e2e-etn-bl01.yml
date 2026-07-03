@@ -6,7 +6,7 @@ on:
 jobs:
   run-bl01:
     runs-on: macos-14
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,7 +41,11 @@ jobs:
           arch: arm64-v8a
           profile: pixel_6
           force-avd-creation: false
-          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          # HVF no esta disponible en runners hospedados por GitHub (sin
+          # virtualizacion anidada); se fuerza modo software (-accel off),
+          # mucho mas lento para arrancar.
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -accel off
+          emulator-boot-timeout: 1800
           disable-animations: true
           script: |
             adb install -r -g apk/etn-sandbox.apk
