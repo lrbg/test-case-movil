@@ -29,8 +29,9 @@ jobs:
           mkdir -p apk
           gh release download etn-sandbox-2.65.0 \
             --repo ${{ github.repository }} \
-            --pattern "etn-sandbox.apk" \
-            --output apk/etn-sandbox.apk
+            --pattern "*.apk" \
+            --dir apk
+          mv apk/*.apk apk/etn-sandbox.apk
 
       - name: Run emulator and E2E flow
         uses: reactivecircus/android-emulator-runner@v2
