@@ -9,6 +9,7 @@ appId: mx.com.etn.etnturistarlujo
 - inputText: "Apellido0"
 - tapOn: { id: "passenger-email-input-0" }
 - inputText: "qa.etn.test@reservamos.mx"
+- tapOn: { text: "Categoría" }
 # "Viajero Protegido" viene ON por defecto; para sin seguro se apaga cada
 # toggle (uno por pasajero/tramo), para con seguro se dejan todos ON.
 - runFlow:

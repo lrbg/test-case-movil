@@ -10,6 +10,7 @@ appId: any
 - inputText: "Apellido0"
 - tapOn: { text: "Correo" }
 - inputText: "qa.label.test@reservamos.mx"
+- tapOn: { text: "Categoría" }
 - scrollUntilVisible:
     element:
       text: "Siguiente"

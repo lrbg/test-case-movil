@@ -19,6 +19,7 @@ appId: any
 - inputText: "Nombre1"
 - tapOn: { text: "Primer apellido", index: 1 }
 - inputText: "Apellido1"
+- tapOn: { text: "Categoría" }
 - scrollUntilVisible:
     element:
       text: "Siguiente"
