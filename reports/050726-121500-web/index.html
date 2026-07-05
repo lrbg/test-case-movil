@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETN Web — BL-01 (ida, 1 pax, tarjeta, sin seguro) — sandbox</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff; --fg: #110c22; --muted: #4f4b5c;
+    --border: #e5e2ee; --card: #f8f8f8; --accent: #2f6f4f; --warn: #b45309; --warnbg: #fff7ed;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #110c22; --fg: #f2f0f8; --muted: #b3aec2;
+      --border: #2a2440; --card: #1a1530; --accent: #5fd68f; --warn: #f5b563; --warnbg: #2a1c0f;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg); color: var(--fg); padding: 2rem 1.25rem 4rem;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  a.back { color: var(--muted); font-size: 0.85rem; text-decoration: none; }
+  h1 { font-size: 1.4rem; margin: 0.75rem 0 0.25rem; }
+  .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; }
+  .badge {
+    display: inline-block; background: var(--warnbg); color: var(--warn); border: 1px solid var(--warn);
+    font-weight: 700; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 999px;
+    margin-bottom: 1.5rem;
+  }
+  table.summary {
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.9rem;
+  }
+  table.summary td { padding: 0.35rem 0.6rem; border-bottom: 1px solid var(--border); }
+  table.summary td:first-child { color: var(--muted); width: 40%; }
+  .step {
+    border: 1px solid var(--border); background: var(--card); border-radius: 12px;
+    padding: 1.1rem 1.2rem 1.3rem; margin-bottom: 1.1rem;
+  }
+  .step h2 { font-size: 1.05rem; margin: 0 0 0.3rem; display: flex; align-items: center; gap: 0.5rem;}
+  .step p.desc { color: var(--muted); font-size: 0.88rem; margin: 0; line-height: 1.5; }
+  .ok { color: var(--accent); font-weight: 700; }
+  .blocked-step {
+    border: 1px solid var(--warn); background: var(--warnbg); border-radius: 12px;
+    padding: 1.1rem 1.2rem 1.3rem; margin-bottom: 1.4rem;
+  }
+  .blocked-step h2 { font-size: 1.05rem; margin: 0 0 0.5rem; color: var(--warn); }
+  .blocked-step p { font-size: 0.9rem; line-height: 1.6; margin: 0 0 0.6rem; }
+  .blocked-step code { background: rgba(128,128,128,0.15); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .note {
+    border-left: 3px solid var(--accent); padding: 0.6rem 0.9rem; font-size: 0.85rem;
+    color: var(--muted); background: var(--card); border-radius: 0 8px 8px 0; margin-bottom: 2rem;
+  }
+  footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.8rem; }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../">&larr; Volver al índice</a>
+    <h1>ETN Web (sandbox) — BL-01: ida, 1 pasajero, tarjeta, sin seguro</h1>
+    <div class="meta">Ejecutado el 5 de julio de 2026 · sitio <code>etn-sbx.resertravel.com</code> · navegador (Firefox/Chrome), interacción manual guiada tras timeout del spec automatizado</div>
+    <span class="badge">⚠ PARCIAL — bloqueado en el formulario de tarjeta (Cybersource)</span>
+
+    <table class="summary">
+      <tr><td>Ruta</td><td>Mexico Norte, Distrito Federal → Celaya, Guanajuato</td></tr>
+      <tr><td>Fecha</td><td>06 Jul 2026, 10:40 AM (corrida "Popular", 1 piso)</td></tr>
+      <tr><td>Pasajeros</td><td>1 Adulto (datos autocompletados por "Compra rápida")</td></tr>
+      <tr><td>Asiento</td><td>3</td></tr>
+      <tr><td>Seguro "Viajero Protegido"</td><td>Apagado (confirmado en modal "No, gracias")</td></tr>
+      <tr><td>Total</td><td>$788.50 MXN</td></tr>
+      <tr><td>Resultado</td><td>No se pudo completar el pago — ver bloqueo abajo</td></tr>
+    </table>
+
+    <div class="note">
+      El spec automatizado de Playwright (<code>e2e_001_complete-a-simple-purchase.spec.js</code>,
+      proyecto <code>Etn-Staging-Firefox</code>) timeoteó 2 veces en el paso "Make search" contra
+      su ruta de datos por defecto (Mexico Norte → Aguascalientes). Se verificó manualmente que el
+      sitio en sí funciona correctamente con esa misma ruta (autocomplete responde bien), así que el
+      resto de la corrida se hizo de forma guiada en el navegador con una ruta con disponibilidad
+      confirmada (Celaya), replicando exactamente el mismo caso que en móvil (BL-01).
+    </div>
+
+    <div class="step">
+      <h2>✅ S0 · Búsqueda</h2>
+      <p class="desc">Home de <code>etn-sbx.resertravel.com</code> carga correctamente. Origen "Mexico Norte, Distrito Federal" y destino "Celaya, Guanajuato" seleccionados vía autocomplete; fecha 06-Jul-26 fijada por calendario.</p>
+    </div>
+
+    <div class="step">
+      <h2>✅ S1 · Horario</h2>
+      <p class="desc">Resultados cargan con normalidad (corrida "Popular" 10:40 AM, 1 piso, $779 MXN, con opción "Compra rápida" que sugiere datos y asiento automáticamente).</p>
+    </div>
+
+    <div class="step">
+      <h2>✅ S2 · Selección de asientos</h2>
+      <p class="desc">Mapa de asiento de 1 piso mostrado inline en la misma página de resultados (a diferencia de móvil, aquí no navega a una pantalla aparte). Asiento 3 seleccionado, precio $830 MXN calculado correctamente ("Continuar con 1 asiento").</p>
+    </div>
+
+    <div class="step">
+      <h2>✅ S3 · Datos del pasajero</h2>
+      <p class="desc">Formulario prellenado automáticamente por "Compra rápida" (Nombre, Apellido, Correo). Categoría por defecto Adulto. Toggle "Viajero Protegido" apagado manualmente + confirmado "No, gracias" en el modal de retención de venta cruzada.</p>
+    </div>
+
+    <div class="step">
+      <h2>✅ S4 · Pago — datos del comprador</h2>
+      <p class="desc">Total correcto sin seguro ($788.50 MXN). Nombre/apellido/teléfono del comprador autocompletados. Método "Crédito o débito" (Visa/Mastercard/Amex) seleccionado por defecto.</p>
+    </div>
+
+    <div class="blocked-step">
+      <h2>⛔ S4 · Pago — formulario de tarjeta (bloqueado)</h2>
+      <p>El formulario de tarjeta está embebido en un <strong>iframe seguro de Cybersource</strong>
+      (<code>testflex.cybersource.com/microform/bundle/v2.12.1/...</code>, mismo proveedor que en la
+      app móvil). Se confirmó con JavaScript que el campo "Número de la tarjeta" es ese iframe exacto,
+      con coordenadas correctas — pero <strong>los clics y las pulsaciones de teclado automatizadas no
+      llegan a registrarse dentro de ese iframe</strong> (ni con tipeo en bloque, ni tecla por tecla,
+      ni usando Tab para enfocar). No se detectó ningún error de la página: el campo simplemente no
+      reacciona a la entrada sintética.</p>
+      <p>Esto es consistente con un <strong>control de seguridad legítimo</strong> de los campos PCI de
+      Cybersource, que en muchos casos rechazan eventos de teclado que no vienen de una interacción de
+      usuario "de confianza" a nivel de sistema operativo — una limitación conocida de automatizar este
+      tipo de iframes de pago con herramientas de automoción de navegador, no un bug del sitio ni del
+      caso de prueba.</p>
+      <p>Datos que se iban a usar (sin llegar a capturarse): tarjeta <code>4111 1111 1111 1111</code>,
+      exp. 03/2030, CVV 737, titular John Doe (mismos datos sandbox que en móvil).</p>
+    </div>
+
+    <footer>
+      Skills usadas: <code>saas-e2e-playwright</code> (diagnóstico inicial) + navegación manual guiada ·
+      Repo: <a href="https://github.com/lrbg/test-case-movil">github.com/lrbg/test-case-movil</a>
+    </footer>
+  </div>
+</body>
+</html>
