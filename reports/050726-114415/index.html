@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETN — BL-01 (ida, 1 pax, tarjeta, sin seguro) — 05/07/26 11:44:15</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff; --fg: #110c22; --muted: #4f4b5c;
+    --border: #e5e2ee; --card: #f8f8f8; --accent: #2f6f4f; --pass: #1f8a4c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #110c22; --fg: #f2f0f8; --muted: #b3aec2;
+      --border: #2a2440; --card: #1a1530; --accent: #5fd68f; --pass: #5fd68f;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg); color: var(--fg); padding: 2rem 1.25rem 4rem;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  a.back { color: var(--muted); font-size: 0.85rem; text-decoration: none; }
+  h1 { font-size: 1.4rem; margin: 0.75rem 0 0.25rem; }
+  .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; }
+  .badge {
+    display: inline-block; background: var(--pass); color: #06210f;
+    font-weight: 700; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 999px;
+    margin-bottom: 1.5rem;
+  }
+  table.summary {
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.9rem;
+  }
+  table.summary td { padding: 0.35rem 0.6rem; border-bottom: 1px solid var(--border); }
+  table.summary td:first-child { color: var(--muted); width: 40%; }
+  .step {
+    border: 1px solid var(--border); background: var(--card); border-radius: 12px;
+    padding: 1.1rem 1.2rem 1.3rem; margin-bottom: 1.4rem;
+  }
+  .step h2 { font-size: 1.05rem; margin: 0 0 0.3rem; }
+  .step p.desc { color: var(--muted); font-size: 0.88rem; margin: 0 0 0.9rem; }
+  .step img {
+    max-width: 100%; border-radius: 8px; border: 1px solid var(--border); display: block;
+  }
+  .note {
+    border-left: 3px solid var(--accent); padding: 0.6rem 0.9rem; font-size: 0.85rem;
+    color: var(--muted); background: var(--card); border-radius: 0 8px 8px 0; margin-bottom: 2rem;
+  }
+  footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.8rem; }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../../">&larr; Volver al índice</a>
+    <h1>ETN — BL-01: ida, 1 pasajero, tarjeta, sin seguro</h1>
+    <div class="meta">Ejecutado el 5 de julio de 2026, 11:44 (hora local) · skill <code>bus-apps-android-e2e</code> · Maestro sobre emulador Android</div>
+    <span class="badge">✔ PASS — compra completa</span>
+
+    <table class="summary">
+      <tr><td>Ruta</td><td>Ciudad de México (México Norte) → Celaya</td></tr>
+      <tr><td>Fecha</td><td>06 jul., 10:40 AM (corrida de 1 piso)</td></tr>
+      <tr><td>Pasajeros</td><td>1 Adulto</td></tr>
+      <tr><td>Asiento</td><td>1</td></tr>
+      <tr><td>Seguro "Viajero Protegido"</td><td>Apagado</td></tr>
+      <tr><td>Método de pago</td><td>Tarjeta (sandbox 4111 1111 1111 1111)</td></tr>
+      <tr><td>Total</td><td>$805 MXN</td></tr>
+      <tr><td>Resultado</td><td>Boletos enviados a qa.etn.test@reservamos.mx</td></tr>
+    </table>
+
+    <div class="note">
+      Nota: la primera corrida que ofrece la búsqueda por defecto (10:40 AM del día siguiente)
+      resultó ser un bus de 2 pisos con un mapa de asientos que el script aún no soporta
+      (limitación conocida, no arreglada). Se eligió manualmente la corrida equivalente de
+      1 piso para completar la demostración; el resto de los pasos corrió el script real sin
+      modificaciones.
+    </div>
+
+    <div class="step">
+      <h2>S1 · Horario</h2>
+      <p class="desc">Resultados de búsqueda Ciudad de México → Celaya. Se eligió la corrida de 1 piso, 10:40 AM.</p>
+      <img src="01-busqueda-horarios.png" alt="Lista de horarios">
+    </div>
+
+    <div class="step">
+      <h2>S2 · Selección de asientos</h2>
+      <p class="desc">Mapa de asientos de un piso, todos libres. El script selecciona 1 asiento disponible.</p>
+      <img src="02-mapa-asientos-cargando.png" alt="Mapa de asientos">
+    </div>
+
+    <div class="step">
+      <h2>S3 · Datos del pasajero</h2>
+      <p class="desc">Asiento 1 confirmado; formulario de pasajero listo para llenarse (Adulto, categoría por defecto).</p>
+      <img src="03-datos-pasajero.png" alt="Formulario de pasajero">
+    </div>
+
+    <div class="step">
+      <h2>S4 · Pago</h2>
+      <p class="desc">Datos del comprador autocompletados desde el pasajero, seguro apagado, modal de "precio actualizado" resuelto, tarjeta sandbox capturada.</p>
+      <img src="04-pago.png" alt="Pantalla de pago">
+    </div>
+
+    <div class="step">
+      <h2>S5 · Confirmación</h2>
+      <p class="desc">"¡Muchas gracias! Tu compra por $805MXN fue exitosa" — boletos enviados por correo.</p>
+      <img src="05-confirmacion-parcial.png" alt="Confirmación de compra">
+    </div>
+
+    <div class="step">
+      <h2>Assert final</h2>
+      <p class="desc">Verificación del texto "Boletos enviados a tu correo" — <strong>COMPLETED</strong>.</p>
+      <img src="06-confirmacion-final.png" alt="Confirmación final">
+    </div>
+
+    <footer>
+      Flow: <code>etn/flows/BL-01-ida-1adulto-tarjeta-sinseguro.yaml</code> ·
+      Repo: <a href="https://github.com/lrbg/test-case-movil">github.com/lrbg/test-case-movil</a>
+    </footer>
+  </div>
+</body>
+</html>
