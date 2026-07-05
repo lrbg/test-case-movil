@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>test-case-movil — Reportes E2E</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #110c22;
+    --muted: #4f4b5c;
+    --border: #e5e2ee;
+    --card: #f8f8f8;
+    --accent: #2f6f4f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #110c22;
+      --fg: #f2f0f8;
+      --muted: #b3aec2;
+      --border: #2a2440;
+      --card: #1a1530;
+      --accent: #5fd68f;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    padding: 2.5rem 1.25rem 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+  p.sub { color: var(--muted); margin-top: 0; margin-bottom: 2rem; font-size: 0.95rem; }
+  ul.reports { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  li.report {
+    border: 1px solid var(--border);
+    background: var(--card);
+    border-radius: 10px;
+    padding: 0.9rem 1.1rem;
+  }
+  li.report a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  li.report a:hover { text-decoration: underline; }
+  li.report .meta { color: var(--muted); font-size: 0.85rem; margin-top: 0.15rem; }
+  footer { margin-top: 3rem; color: var(--muted); font-size: 0.8rem; }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Reportes E2E — test-case-movil</h1>
+    <p class="sub">Flows de Maestro para apps de autobús white-label (ETN, Gontijo, Cruz del Sur, Autovías). Reportes generados por cada corrida, nombrados con fecha y hora (ddmmyy-hhmmss).</p>
+
+    <ul class="reports">
+      <li class="report">
+        <a href="reports/030726-162445.html">030726-162445</a>
+        <div class="meta">ETN · BL-01 (ida, 1 pax, tarjeta, sin seguro) · 3 jul 2026, 16:24</div>
+      </li>
+    </ul>
+
+    <footer>
+      Repo: <a href="https://github.com/lrbg/test-case-movil">github.com/lrbg/test-case-movil</a>
+    </footer>
+  </div>
+</body>
+</html>
