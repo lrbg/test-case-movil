@@ -1,4 +1,91 @@
-<!doctype html>
+#!/usr/bin/env node
+// Genera el dashboard raiz (index.html) que GitHub Pages publica desde la rama
+// master. Lee el manifest reports/index.json, cuenta las evidencias reales de
+// cada reporte y arma un resumen global + tarjetas por corrida.
+//
+// Uso:  node scripts/build-index.mjs
+// Sin dependencias externas (Node >=18).
+
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const MANIFEST = path.join(ROOT, "reports", "index.json");
+const OUT = path.join(ROOT, "index.html");
+
+const MONTHS = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+
+function esc(s) {
+  return String(s ?? "")
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+function humanDate(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(iso || "");
+  if (!m) return "—";
+  const [, y, mo, d, h, mi] = m;
+  return `${parseInt(d)} ${MONTHS[parseInt(mo) - 1]} ${y}, ${h}:${mi}`;
+}
+
+// Cuenta los .png dentro de la carpeta del reporte (evidencias reales).
+function countEvidence(reportPath) {
+  const abs = path.join(ROOT, reportPath);
+  if (!fs.existsSync(abs)) return 0;
+  const stat = fs.statSync(abs);
+  if (!stat.isDirectory()) return 0;
+  let n = 0;
+  for (const e of fs.readdirSync(abs)) if (/\.png$/i.test(e)) n++;
+  return n;
+}
+
+const STATUS = {
+  pass: { label: "Aprobado", cls: "ok" },
+  fail: { label: "Fallido", cls: "fail" },
+  bugs: { label: "Con hallazgos", cls: "warn" },
+  unknown: { label: "Sin datos", cls: "muted" },
+};
+
+function statusBadge(status) {
+  const s = STATUS[status] || STATUS.unknown;
+  return `<span class="badge badge-${s.cls}">${s.label}</span>`;
+}
+
+function main() {
+  const manifest = JSON.parse(fs.readFileSync(MANIFEST, "utf8"));
+  const reports = manifest.reports
+    .map((r) => ({ ...r, evidence: countEvidence(r.path) }))
+    .sort((a, b) => (a.date < b.date ? 1 : -1));
+
+  const total = reports.length;
+  const pass = reports.filter((r) => r.status === "pass").length;
+  const fail = reports.filter((r) => r.status === "fail").length;
+  const bugs = reports.reduce((n, r) => n + (r.bugs || 0), 0);
+  const evidence = reports.reduce((n, r) => n + r.evidence, 0);
+
+  const cards = reports
+    .map(
+      (r) => `
+      <li class="report" onclick="location.href='${esc(r.path)}'">
+        <div class="report-main">
+          <div class="report-title">
+            <a href="${esc(r.path)}">${esc(r.brand)} · ${esc(r.case)}</a>
+            ${statusBadge(r.status)}
+          </div>
+          <p class="report-sub">${esc(r.title)}</p>
+          <p class="report-summary">${esc(r.summary)}</p>
+        </div>
+        <div class="report-meta">
+          <span class="chip">${esc(r.platform)}</span>
+          <span class="chip chip-type">${r.type === "exploracion" ? "Exploratoria" : "E2E"}</span>
+          <span class="meta-line">${esc(humanDate(r.date))}</span>
+          <span class="meta-line">${r.evidence} evidencia${r.evidence === 1 ? "" : "s"}${r.bugs ? ` · ${r.bugs} bug${r.bugs === 1 ? "" : "s"}` : ""}</span>
+        </div>
+      </li>`
+    )
+    .join("");
+
+  const html = `<!doctype html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -77,78 +164,14 @@
     </header>
 
     <section class="stats">
-      <div class="stat"><span class="n">4</span><span class="l">Reportes</span></div>
-      <div class="stat ok"><span class="n">2</span><span class="l">Aprobados</span></div>
-      <div class="stat fail"><span class="n">0</span><span class="l">Fallidos</span></div>
-      <div class="stat warn"><span class="n">2</span><span class="l">Bugs</span></div>
-      <div class="stat"><span class="n">20</span><span class="l">Evidencias</span></div>
+      <div class="stat"><span class="n">${total}</span><span class="l">Reportes</span></div>
+      <div class="stat ok"><span class="n">${pass}</span><span class="l">Aprobados</span></div>
+      <div class="stat fail"><span class="n">${fail}</span><span class="l">Fallidos</span></div>
+      <div class="stat warn"><span class="n">${bugs}</span><span class="l">Bugs</span></div>
+      <div class="stat"><span class="n">${evidence}</span><span class="l">Evidencias</span></div>
     </section>
 
-    <ul class="reports">
-      <li class="report" onclick="location.href='reports/050726-141900-exploracion/'">
-        <div class="report-main">
-          <div class="report-title">
-            <a href="reports/050726-141900-exploracion/">ETN · Exploración ISTQB</a>
-            <span class="badge badge-warn">Con hallazgos</span>
-          </div>
-          <p class="report-sub">Sesión exploratoria — 4 cartas</p>
-          <p class="report-summary">2 bugs confirmados (selección de asientos, validación nombre/apellido).</p>
-        </div>
-        <div class="report-meta">
-          <span class="chip">Android</span>
-          <span class="chip chip-type">Exploratoria</span>
-          <span class="meta-line">5 jul 2026, 14:19</span>
-          <span class="meta-line">8 evidencias · 2 bugs</span>
-        </div>
-      </li>
-      <li class="report" onclick="location.href='reports/050726-121500-web/'">
-        <div class="report-main">
-          <div class="report-title">
-            <a href="reports/050726-121500-web/">ETN · BL-01</a>
-            <span class="badge badge-ok">Aprobado</span>
-          </div>
-          <p class="report-sub">ida · 1 pax · tarjeta · sin seguro</p>
-          <p class="report-summary">Compra completa en sandbox web, capturas paso a paso.</p>
-        </div>
-        <div class="report-meta">
-          <span class="chip">Web</span>
-          <span class="chip chip-type">E2E</span>
-          <span class="meta-line">5 jul 2026, 12:15</span>
-          <span class="meta-line">6 evidencias</span>
-        </div>
-      </li>
-      <li class="report" onclick="location.href='reports/050726-114415/'">
-        <div class="report-main">
-          <div class="report-title">
-            <a href="reports/050726-114415/">ETN · BL-01</a>
-            <span class="badge badge-ok">Aprobado</span>
-          </div>
-          <p class="report-sub">ida · 1 pax · tarjeta · sin seguro</p>
-          <p class="report-summary">Compra completa en la app, capturas paso a paso.</p>
-        </div>
-        <div class="report-meta">
-          <span class="chip">Android</span>
-          <span class="chip chip-type">E2E</span>
-          <span class="meta-line">5 jul 2026, 11:44</span>
-          <span class="meta-line">6 evidencias</span>
-        </div>
-      </li>
-      <li class="report" onclick="location.href='reports/030726-162445.html'">
-        <div class="report-main">
-          <div class="report-title">
-            <a href="reports/030726-162445.html">ETN · BL-01</a>
-            <span class="badge badge-muted">Sin datos</span>
-          </div>
-          <p class="report-sub">ida · 1 pax · tarjeta · sin seguro</p>
-          <p class="report-summary">Reporte inicial (ai-report de Maestro, sin evidencias de imagen).</p>
-        </div>
-        <div class="report-meta">
-          <span class="chip">Android</span>
-          <span class="chip chip-type">E2E</span>
-          <span class="meta-line">3 jul 2026, 16:24</span>
-          <span class="meta-line">0 evidencias</span>
-        </div>
-      </li>
+    <ul class="reports">${cards}
     </ul>
 
     <footer>
@@ -157,3 +180,10 @@
   </div>
 </body>
 </html>
+`;
+
+  fs.writeFileSync(OUT, html);
+  console.log(`index.html generado: ${total} reportes, ${pass} aprobados, ${fail} fallidos, ${bugs} bugs, ${evidence} evidencias.`);
+}
+
+main();
