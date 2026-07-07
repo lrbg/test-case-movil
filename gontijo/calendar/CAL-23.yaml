@@ -1,0 +1,11 @@
+appId: br.com.gontijo.viagens
+---
+# CAL-23 — Sistema: Cambiar la fecha del dispositivo recalcula "hoy" y deshabilitados.
+- runFlow:
+    file: ../../shared/gontijo/calendar/_open.yaml
+    env:
+      APP_ID: "br.com.gontijo.viagens"
+      ORIGIN: "Sao Paulo"
+      DESTINATION: "Belo Horizonte"
+- runFlow:
+    file: ../../shared/calendar/CAL-23.yaml

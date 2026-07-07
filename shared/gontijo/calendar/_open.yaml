@@ -1,0 +1,17 @@
+# Abre o calendario de saida (Gontijo, PT). Precondicion para os CAL-*.
+# env: APP_ID, ORIGIN, DESTINATION
+appId: any
+---
+- runFlow:
+    file: ../../launch-app.yaml
+    env:
+      APP_ID: ${APP_ID}
+      HOME_ANCHOR_TEXT: "Selecione sua Origem"
+- tapOn: { text: "Selecione sua Origem" }
+- inputText: ${ORIGIN}
+- tapOn: { text: ${ORIGIN}, index: 0 }
+- tapOn: { text: ${ORIGIN}, index: 0 }
+- inputText: ${DESTINATION}
+- tapOn: { text: ${DESTINATION}, index: 0 }
+- tapOn: { text: ${DESTINATION}, index: 0 }
+- tapOn: { text: "Ida, Data de Partida" }

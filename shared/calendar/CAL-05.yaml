@@ -1,0 +1,9 @@
+# CAL-05 — Rejilla: El dia 1 del mes siempre en su columna correcta.
+# Core agnostico de marca. Precondicion: calendario abierto (via el helper
+# shared/<variante>/calendar/_open.yaml que invoca el wrapper por marca).
+# Criterio de alineacion columna<->dia: revision visual del screenshot (limitacion
+# inherente del datepicker); la asercion automatica cubre el ancla comprobable.
+appId: any
+---
+- assertVisible: "1"
+- takeScreenshot: CAL-05-dia-1-en-columna

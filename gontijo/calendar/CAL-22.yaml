@@ -1,0 +1,11 @@
+appId: br.com.gontijo.viagens
+---
+# CAL-22 — Responsive: Pantalla angosta / densidad alta (causa raiz <600px) sin deformar.
+- runFlow:
+    file: ../../shared/gontijo/calendar/_open.yaml
+    env:
+      APP_ID: "br.com.gontijo.viagens"
+      ORIGIN: "Sao Paulo"
+      DESTINATION: "Belo Horizonte"
+- runFlow:
+    file: ../../shared/calendar/CAL-22.yaml

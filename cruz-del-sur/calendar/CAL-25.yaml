@@ -1,0 +1,13 @@
+appId: pe.com.cds
+---
+# CAL-25 — Coherencia: Fechas ida+regreso correctas (coherencia completa via BL redondo).
+- runFlow:
+    file: ../../shared/label-es/calendar/_open.yaml
+    env:
+      APP_ID: "pe.com.cds"
+      HOME_ANCHOR_TEXT: "Selecciona tu Origen"
+      ORIGIN: "Lima"
+      DESTINATION: "Ica"
+      DATE_TRIGGER: "Ida, Fecha de Salida"
+- runFlow:
+    file: ../../shared/calendar/CAL-25.yaml

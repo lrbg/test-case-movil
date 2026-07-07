@@ -1,0 +1,11 @@
+appId: mx.com.etn.etnturistarlujo
+---
+# CAL-25 — Coherencia: Fechas ida+regreso correctas (coherencia completa via BL redondo).
+- runFlow:
+    file: ../../shared/etn/calendar/_open.yaml
+    env:
+      APP_ID: "mx.com.etn.etnturistarlujo"
+      ORIGIN: "Ciudad de Mexico"
+      DESTINATION: "Celaya"
+- runFlow:
+    file: ../../shared/calendar/CAL-25.yaml

@@ -1,0 +1,11 @@
+appId: br.com.gontijo.viagens
+---
+# CAL-24 — Coherencia: Fecha de ida coincide de punta a punta. Aqui se fija manana; la coherencia hasta el boleto se valida con el BL correspondiente.
+- runFlow:
+    file: ../../shared/gontijo/calendar/_open.yaml
+    env:
+      APP_ID: "br.com.gontijo.viagens"
+      ORIGIN: "Sao Paulo"
+      DESTINATION: "Belo Horizonte"
+- runFlow:
+    file: ../../shared/calendar/CAL-24.yaml

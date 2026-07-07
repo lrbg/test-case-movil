@@ -1,0 +1,11 @@
+appId: br.com.gontijo.viagens
+---
+# CAL-16 — Redondo: Calendario de regreso alineado y >= fecha de ida.
+- runFlow:
+    file: ../../shared/gontijo/calendar/_open.yaml
+    env:
+      APP_ID: "br.com.gontijo.viagens"
+      ORIGIN: "Sao Paulo"
+      DESTINATION: "Belo Horizonte"
+- runFlow:
+    file: ../../shared/calendar/CAL-16.yaml

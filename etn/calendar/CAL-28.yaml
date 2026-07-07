@@ -1,0 +1,13 @@
+appId: mx.com.etn.etnturistarlujo
+---
+# CAL-28 — Validacion: Buscar sin Origen/Destino no deja la app atorada: redirige a seleccion de origen y sigue responsiva.
+- runFlow:
+    file: ../../shared/launch-app.yaml
+    env:
+      APP_ID: "mx.com.etn.etnturistarlujo"
+      HOME_ANCHOR_ID: "search-origin-trigger"
+# Intenta buscar sin elegir Origen/Destino:
+- tapOn: { id: "search-submit-button", optional: true }
+- takeScreenshot: CAL-28-buscar-sin-origen-destino
+# La app debe seguir viva y pedir el origen (no quedarse atorada):
+- assertVisible: { id: "search-origin-trigger" }

@@ -1,0 +1,11 @@
+appId: br.com.gontijo.viagens
+---
+# CAL-08 — Rejilla: Meses de 30 y 31 dias sin desbordar la rejilla.
+- runFlow:
+    file: ../../shared/gontijo/calendar/_open.yaml
+    env:
+      APP_ID: "br.com.gontijo.viagens"
+      ORIGIN: "Sao Paulo"
+      DESTINATION: "Belo Horizonte"
+- runFlow:
+    file: ../../shared/calendar/CAL-08.yaml

@@ -1,0 +1,18 @@
+# Abre el calendario de salida con Origen/Destino ya fijados (apps label ES).
+# Precondicion para los CAL-*; deja el calendario abierto en el mes actual.
+# env: APP_ID, HOME_ANCHOR_TEXT, ORIGIN, DESTINATION, DATE_TRIGGER
+appId: any
+---
+- runFlow:
+    file: ../../launch-app.yaml
+    env:
+      APP_ID: ${APP_ID}
+      HOME_ANCHOR_TEXT: ${HOME_ANCHOR_TEXT}
+- tapOn: { text: ${HOME_ANCHOR_TEXT} }
+- inputText: ${ORIGIN}
+- tapOn: { text: ${ORIGIN}, index: 0 }
+- tapOn: { text: ${ORIGIN}, index: 0 }
+- inputText: ${DESTINATION}
+- tapOn: { text: ${DESTINATION}, index: 0 }
+- tapOn: { text: ${DESTINATION}, index: 0 }
+- tapOn: { text: ${DATE_TRIGGER} }

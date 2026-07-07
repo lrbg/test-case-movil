@@ -1,0 +1,10 @@
+# CAL-13 — Seleccion: Coherencia tap->valor: tocar manana selecciona manana.
+# Core agnostico de marca. Precondicion: calendario abierto (via el helper
+# shared/<variante>/calendar/_open.yaml que invoca el wrapper por marca).
+# Criterio de alineacion columna<->dia: revision visual del screenshot (limitacion
+# inherente del datepicker); la asercion automatica cubre el ancla comprobable.
+appId: any
+---
+- evalScript: ${output.manana = (new Date(Date.now() + 86400000)).getDate().toString()}
+- tapOn: { text: "^${output.manana}$" }
+- takeScreenshot: CAL-13-tap-igual-valor

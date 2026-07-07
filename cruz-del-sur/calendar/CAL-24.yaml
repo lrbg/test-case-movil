@@ -1,0 +1,13 @@
+appId: pe.com.cds
+---
+# CAL-24 — Coherencia: Fecha de ida coincide de punta a punta. Aqui se fija manana; la coherencia hasta el boleto se valida con el BL correspondiente.
+- runFlow:
+    file: ../../shared/label-es/calendar/_open.yaml
+    env:
+      APP_ID: "pe.com.cds"
+      HOME_ANCHOR_TEXT: "Selecciona tu Origen"
+      ORIGIN: "Lima"
+      DESTINATION: "Ica"
+      DATE_TRIGGER: "Ida, Fecha de Salida"
+- runFlow:
+    file: ../../shared/calendar/CAL-24.yaml

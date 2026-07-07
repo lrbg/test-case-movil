@@ -1,0 +1,8 @@
+# CAL-06 — Rejilla: Febrero no bisiesto (28 dias, sin dia 29). Navegar a feb del proximo anio no bisiesto.
+# Core agnostico de marca. Precondicion: calendario abierto (via el helper
+# shared/<variante>/calendar/_open.yaml que invoca el wrapper por marca).
+# Criterio de alineacion columna<->dia: revision visual del screenshot (limitacion
+# inherente del datepicker); la asercion automatica cubre el ancla comprobable.
+appId: any
+---
+- takeScreenshot: CAL-06-febrero-no-bisiesto

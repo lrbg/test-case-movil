@@ -1,0 +1,13 @@
+appId: com.gho.autovias
+---
+# CAL-28 — Validacion: Buscar sin Origen/Destino no deja la app atorada: redirige a seleccion de origen y sigue responsiva.
+- runFlow:
+    file: ../../shared/launch-app.yaml
+    env:
+      APP_ID: "com.gho.autovias"
+      HOME_ANCHOR_TEXT: "Selecciona tu Origen"
+# Intenta buscar sin elegir Origen/Destino:
+- tapOn: { text: "BUSCAR", optional: true }
+- takeScreenshot: CAL-28-buscar-sin-origen-destino
+# La app debe seguir viva y pedir el origen (no quedarse atorada):
+- assertVisible: "Selecciona tu Origen"

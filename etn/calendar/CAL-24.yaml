@@ -1,0 +1,11 @@
+appId: mx.com.etn.etnturistarlujo
+---
+# CAL-24 — Coherencia: Fecha de ida coincide de punta a punta. Aqui se fija manana; la coherencia hasta el boleto se valida con el BL correspondiente.
+- runFlow:
+    file: ../../shared/etn/calendar/_open.yaml
+    env:
+      APP_ID: "mx.com.etn.etnturistarlujo"
+      ORIGIN: "Ciudad de Mexico"
+      DESTINATION: "Celaya"
+- runFlow:
+    file: ../../shared/calendar/CAL-24.yaml

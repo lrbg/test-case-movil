@@ -1,0 +1,13 @@
+appId: pe.com.cds
+---
+# CAL-16 — Redondo: Calendario de regreso alineado y >= fecha de ida.
+- runFlow:
+    file: ../../shared/label-es/calendar/_open.yaml
+    env:
+      APP_ID: "pe.com.cds"
+      HOME_ANCHOR_TEXT: "Selecciona tu Origen"
+      ORIGIN: "Lima"
+      DESTINATION: "Ica"
+      DATE_TRIGGER: "Ida, Fecha de Salida"
+- runFlow:
+    file: ../../shared/calendar/CAL-16.yaml

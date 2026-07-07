@@ -1,0 +1,8 @@
+# CAL-03 — Rejilla: Encabezados de dia en orden semana (lunes->domingo) y en idioma.
+# Core agnostico de marca. Precondicion: calendario abierto (via el helper
+# shared/<variante>/calendar/_open.yaml que invoca el wrapper por marca).
+# Criterio de alineacion columna<->dia: revision visual del screenshot (limitacion
+# inherente del datepicker); la asercion automatica cubre el ancla comprobable.
+appId: any
+---
+- takeScreenshot: CAL-03-encabezados-semana

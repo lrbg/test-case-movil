@@ -1,0 +1,11 @@
+appId: br.com.gontijo.viagens
+---
+# CAL-17 — Redondo: Rango ida-regreso resaltado sobre las celdas correctas.
+- runFlow:
+    file: ../../shared/gontijo/calendar/_open.yaml
+    env:
+      APP_ID: "br.com.gontijo.viagens"
+      ORIGIN: "Sao Paulo"
+      DESTINATION: "Belo Horizonte"
+- runFlow:
+    file: ../../shared/calendar/CAL-17.yaml

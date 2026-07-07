@@ -1,0 +1,11 @@
+appId: mx.com.etn.etnturistarlujo
+---
+# CAL-27 — Otros: Otros selectores de fecha de la app tambien alineados.
+- runFlow:
+    file: ../../shared/etn/calendar/_open.yaml
+    env:
+      APP_ID: "mx.com.etn.etnturistarlujo"
+      ORIGIN: "Ciudad de Mexico"
+      DESTINATION: "Celaya"
+- runFlow:
+    file: ../../shared/calendar/CAL-27.yaml

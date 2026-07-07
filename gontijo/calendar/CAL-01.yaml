@@ -1,0 +1,11 @@
+appId: br.com.gontijo.viagens
+---
+# CAL-01 — Rejilla: Mes actual alineado: el dia de hoy cae en su columna, sin corrimiento (AM-1529).
+- runFlow:
+    file: ../../shared/gontijo/calendar/_open.yaml
+    env:
+      APP_ID: "br.com.gontijo.viagens"
+      ORIGIN: "Sao Paulo"
+      DESTINATION: "Belo Horizonte"
+- runFlow:
+    file: ../../shared/calendar/CAL-01.yaml

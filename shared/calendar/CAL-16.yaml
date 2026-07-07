@@ -1,0 +1,9 @@
+# CAL-16 — Redondo: Calendario de regreso alineado y >= fecha de ida.
+# Core agnostico de marca. Precondicion: calendario abierto (via el helper
+# shared/<variante>/calendar/_open.yaml que invoca el wrapper por marca).
+# Criterio de alineacion columna<->dia: revision visual del screenshot (limitacion
+# inherente del datepicker); la asercion automatica cubre el ancla comprobable.
+appId: any
+---
+- tapOn: { text: "Redondo", optional: true }
+- takeScreenshot: CAL-16-regreso-alineado

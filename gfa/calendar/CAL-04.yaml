@@ -1,0 +1,13 @@
+appId: com.gfa.PrimeraPlus
+---
+# CAL-04 — Rejilla: Numero de filas correcto por mes (5 vs 6 semanas), sin huecos.
+- runFlow:
+    file: ../../shared/label-es/calendar/_open.yaml
+    env:
+      APP_ID: "com.gfa.PrimeraPlus"
+      HOME_ANCHOR_TEXT: "Selecciona tu Origen"
+      ORIGIN: "Guadalajara"
+      DESTINATION: "Aguascalientes"
+      DATE_TRIGGER: "Ida, Fecha de Salida"
+- runFlow:
+    file: ../../shared/calendar/CAL-04.yaml

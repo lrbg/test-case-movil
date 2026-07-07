@@ -1,0 +1,13 @@
+appId: pe.com.cds
+---
+# CAL-10 — Navegacion: Avance multi-mes mantiene la alineacion.
+- runFlow:
+    file: ../../shared/label-es/calendar/_open.yaml
+    env:
+      APP_ID: "pe.com.cds"
+      HOME_ANCHOR_TEXT: "Selecciona tu Origen"
+      ORIGIN: "Lima"
+      DESTINATION: "Ica"
+      DATE_TRIGGER: "Ida, Fecha de Salida"
+- runFlow:
+    file: ../../shared/calendar/CAL-10.yaml

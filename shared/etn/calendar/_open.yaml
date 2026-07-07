@@ -1,0 +1,16 @@
+# Abre el calendario de salida (ETN, testIDs). Precondicion para los CAL-*.
+# env: APP_ID, ORIGIN, DESTINATION
+appId: any
+---
+- runFlow:
+    file: ../../launch-app.yaml
+    env:
+      APP_ID: ${APP_ID}
+      HOME_ANCHOR_ID: "search-origin-trigger"
+- tapOn: { text: "No permitir", optional: true }
+- tapOn: { id: "search-origin-trigger" }
+- inputText: ${ORIGIN}
+- tapOn: { id: "search-origin-result-0" }
+- inputText: ${DESTINATION}
+- tapOn: { id: "search-destination-result-0" }
+- tapOn: { id: "search-date-select" }

@@ -1,0 +1,11 @@
+appId: br.com.gontijo.viagens
+---
+# CAL-02 — Rejilla: "Hoy" resaltado en la celda del dia correcto.
+- runFlow:
+    file: ../../shared/gontijo/calendar/_open.yaml
+    env:
+      APP_ID: "br.com.gontijo.viagens"
+      ORIGIN: "Sao Paulo"
+      DESTINATION: "Belo Horizonte"
+- runFlow:
+    file: ../../shared/calendar/CAL-02.yaml

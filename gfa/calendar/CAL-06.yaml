@@ -1,0 +1,13 @@
+appId: com.gfa.PrimeraPlus
+---
+# CAL-06 — Rejilla: Febrero no bisiesto (28 dias, sin dia 29). Navegar a feb del proximo anio no bisiesto.
+- runFlow:
+    file: ../../shared/label-es/calendar/_open.yaml
+    env:
+      APP_ID: "com.gfa.PrimeraPlus"
+      HOME_ANCHOR_TEXT: "Selecciona tu Origen"
+      ORIGIN: "Guadalajara"
+      DESTINATION: "Aguascalientes"
+      DATE_TRIGGER: "Ida, Fecha de Salida"
+- runFlow:
+    file: ../../shared/calendar/CAL-06.yaml

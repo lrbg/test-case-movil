@@ -1,0 +1,8 @@
+# CAL-22 — Responsive: Pantalla angosta / densidad alta (causa raiz <600px) sin deformar.
+# Core agnostico de marca. Precondicion: calendario abierto (via el helper
+# shared/<variante>/calendar/_open.yaml que invoca el wrapper por marca).
+# Criterio de alineacion columna<->dia: revision visual del screenshot (limitacion
+# inherente del datepicker); la asercion automatica cubre el ancla comprobable.
+appId: any
+---
+- takeScreenshot: CAL-22-pantalla-angosta

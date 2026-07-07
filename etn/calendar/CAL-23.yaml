@@ -1,0 +1,11 @@
+appId: mx.com.etn.etnturistarlujo
+---
+# CAL-23 — Sistema: Cambiar la fecha del dispositivo recalcula "hoy" y deshabilitados.
+- runFlow:
+    file: ../../shared/etn/calendar/_open.yaml
+    env:
+      APP_ID: "mx.com.etn.etnturistarlujo"
+      ORIGIN: "Ciudad de Mexico"
+      DESTINATION: "Celaya"
+- runFlow:
+    file: ../../shared/calendar/CAL-23.yaml

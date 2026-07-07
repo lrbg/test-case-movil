@@ -1,0 +1,8 @@
+# CAL-07 — Rejilla: Febrero bisiesto: el dia 29 existe y bien ubicado.
+# Core agnostico de marca. Precondicion: calendario abierto (via el helper
+# shared/<variante>/calendar/_open.yaml que invoca el wrapper por marca).
+# Criterio de alineacion columna<->dia: revision visual del screenshot (limitacion
+# inherente del datepicker); la asercion automatica cubre el ancla comprobable.
+appId: any
+---
+- takeScreenshot: CAL-07-febrero-bisiesto

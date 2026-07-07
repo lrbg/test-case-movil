@@ -1,0 +1,11 @@
+appId: br.com.gontijo.viagens
+---
+# CAL-19 — Redondo: "Boleto abierto / sin fecha de ida" no rompe el calendario.
+- runFlow:
+    file: ../../shared/gontijo/calendar/_open.yaml
+    env:
+      APP_ID: "br.com.gontijo.viagens"
+      ORIGIN: "Sao Paulo"
+      DESTINATION: "Belo Horizonte"
+- runFlow:
+    file: ../../shared/calendar/CAL-19.yaml

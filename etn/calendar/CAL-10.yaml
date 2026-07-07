@@ -1,0 +1,11 @@
+appId: mx.com.etn.etnturistarlujo
+---
+# CAL-10 — Navegacion: Avance multi-mes mantiene la alineacion.
+- runFlow:
+    file: ../../shared/etn/calendar/_open.yaml
+    env:
+      APP_ID: "mx.com.etn.etnturistarlujo"
+      ORIGIN: "Ciudad de Mexico"
+      DESTINATION: "Celaya"
+- runFlow:
+    file: ../../shared/calendar/CAL-10.yaml

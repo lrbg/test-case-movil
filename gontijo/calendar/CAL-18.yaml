@@ -1,0 +1,11 @@
+appId: br.com.gontijo.viagens
+---
+# CAL-18 — Redondo: Cambiar la ida tras fijar el regreso se maneja coherente.
+- runFlow:
+    file: ../../shared/gontijo/calendar/_open.yaml
+    env:
+      APP_ID: "br.com.gontijo.viagens"
+      ORIGIN: "Sao Paulo"
+      DESTINATION: "Belo Horizonte"
+- runFlow:
+    file: ../../shared/calendar/CAL-18.yaml

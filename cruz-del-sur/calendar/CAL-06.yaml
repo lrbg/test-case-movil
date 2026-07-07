@@ -1,0 +1,13 @@
+appId: pe.com.cds
+---
+# CAL-06 — Rejilla: Febrero no bisiesto (28 dias, sin dia 29). Navegar a feb del proximo anio no bisiesto.
+- runFlow:
+    file: ../../shared/label-es/calendar/_open.yaml
+    env:
+      APP_ID: "pe.com.cds"
+      HOME_ANCHOR_TEXT: "Selecciona tu Origen"
+      ORIGIN: "Lima"
+      DESTINATION: "Ica"
+      DATE_TRIGGER: "Ida, Fecha de Salida"
+- runFlow:
+    file: ../../shared/calendar/CAL-06.yaml

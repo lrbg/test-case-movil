@@ -1,0 +1,13 @@
+appId: com.gho.autovias
+---
+# CAL-20 — Responsive: Rotacion a horizontal conserva la alineacion.
+- runFlow:
+    file: ../../shared/label-es/calendar/_open.yaml
+    env:
+      APP_ID: "com.gho.autovias"
+      HOME_ANCHOR_TEXT: "Selecciona tu Origen"
+      ORIGIN: "Guadalajara"
+      DESTINATION: "Colima"
+      DATE_TRIGGER: "Ida, Fecha de Salida"
+- runFlow:
+    file: ../../shared/calendar/CAL-20.yaml

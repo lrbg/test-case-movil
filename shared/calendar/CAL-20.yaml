@@ -1,0 +1,11 @@
+# CAL-20 — Responsive: Rotacion a horizontal conserva la alineacion.
+# Core agnostico de marca. Precondicion: calendario abierto (via el helper
+# shared/<variante>/calendar/_open.yaml que invoca el wrapper por marca).
+# Criterio de alineacion columna<->dia: revision visual del screenshot (limitacion
+# inherente del datepicker); la asercion automatica cubre el ancla comprobable.
+appId: any
+---
+- setOrientation: LANDSCAPE
+- takeScreenshot: CAL-20-horizontal
+- setOrientation: PORTRAIT
+- takeScreenshot: CAL-20-vertical

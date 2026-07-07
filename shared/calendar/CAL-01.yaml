@@ -1,0 +1,10 @@
+# CAL-01 — Rejilla: Mes actual alineado: el dia de hoy cae en su columna, sin corrimiento (AM-1529).
+# Core agnostico de marca. Precondicion: calendario abierto (via el helper
+# shared/<variante>/calendar/_open.yaml que invoca el wrapper por marca).
+# Criterio de alineacion columna<->dia: revision visual del screenshot (limitacion
+# inherente del datepicker); la asercion automatica cubre el ancla comprobable.
+appId: any
+---
+- evalScript: ${output.hoy = (new Date()).getDate().toString()}
+- assertVisible: "${output.hoy}"
+- takeScreenshot: CAL-01-rejilla-mes-actual

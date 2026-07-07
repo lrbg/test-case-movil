@@ -1,0 +1,11 @@
+appId: br.com.gontijo.viagens
+---
+# CAL-26 — Coherencia: Cambiar fecha y rebuscar refleja la nueva fecha en resultados.
+- runFlow:
+    file: ../../shared/gontijo/calendar/_open.yaml
+    env:
+      APP_ID: "br.com.gontijo.viagens"
+      ORIGIN: "Sao Paulo"
+      DESTINATION: "Belo Horizonte"
+- runFlow:
+    file: ../../shared/calendar/CAL-26.yaml

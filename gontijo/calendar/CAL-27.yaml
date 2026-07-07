@@ -1,0 +1,11 @@
+appId: br.com.gontijo.viagens
+---
+# CAL-27 — Otros: Otros selectores de fecha de la app tambien alineados.
+- runFlow:
+    file: ../../shared/gontijo/calendar/_open.yaml
+    env:
+      APP_ID: "br.com.gontijo.viagens"
+      ORIGIN: "Sao Paulo"
+      DESTINATION: "Belo Horizonte"
+- runFlow:
+    file: ../../shared/calendar/CAL-27.yaml

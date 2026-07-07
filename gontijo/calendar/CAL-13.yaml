@@ -1,0 +1,11 @@
+appId: br.com.gontijo.viagens
+---
+# CAL-13 — Seleccion: Coherencia tap->valor: tocar manana selecciona manana.
+- runFlow:
+    file: ../../shared/gontijo/calendar/_open.yaml
+    env:
+      APP_ID: "br.com.gontijo.viagens"
+      ORIGIN: "Sao Paulo"
+      DESTINATION: "Belo Horizonte"
+- runFlow:
+    file: ../../shared/calendar/CAL-13.yaml
